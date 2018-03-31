@@ -55,3 +55,17 @@ footer {
     margin-top: -50px;
     /* height:100px; */
 }
+.weather {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin-top: 25px;
+    font-size: 30px !important;
+    font-stretch: narrower;
+
+}
+.horizontal {
+    background-color: slategray;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+
+    opacity: 0.6;
+    height: 100px;
+}
