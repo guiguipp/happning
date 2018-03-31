@@ -48,4 +48,5 @@ footer {
     bottom: 0;
     background-color: darkslategray !important;
     opacity: 0.4;
+    margin-top: -50px;
 }
