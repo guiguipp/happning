@@ -18,6 +18,10 @@ h3 {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
+input {
+    color: white;
+}
+
 button {
     float: left;
     margin-left: 140px;
@@ -29,7 +33,7 @@ button {
 }
 
 body {
-    background: url(city_scape.jpg);
+    background: url(../city_scape.jpg);
     bottom: 0;
     left: 0;
     display: flex;
@@ -49,4 +53,5 @@ footer {
     background-color: darkslategray !important;
     opacity: 0.4;
     margin-top: -50px;
+    /* height:100px; */
 }
