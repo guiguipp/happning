@@ -1,0 +1,51 @@
+/* index */
+.card-title {
+    font-family: 'Monoton', cursive;
+    font-size: 40px !important;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.card-action {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 20px !important;
+    color: gray;
+    margin-left: 40px;
+}
+
+h3 {
+    margin: 60px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+button {
+    float: left;
+    margin-left: 140px;
+    margin-top: 30px;
+}
+.waves-effect {
+    background-color: darkgray;
+    float: left;
+}
+
+body {
+    background: url(city_scape.jpg);
+    bottom: 0;
+    left: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.active {
+    font-size: 20px !important;
+}
+
+.main {
+    margin-top: 50px;
+    flex: 1 0 auto;
+}
+footer {
+    bottom: 0;
+    background-color: darkslategray !important;
+    opacity: 0.4;
+}
