@@ -6,6 +6,11 @@
     margin-top: 50px;
 }
 
+.input-body, .panel-body {
+    background-color: white;
+}
+
+
 .table {
     margin-bottom: 20px;
 }
