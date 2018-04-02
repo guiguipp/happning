@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttons">
+        <button id="weather">Weather</button>
+    </div>
+
+    <div id="description">
+
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $("#weather").on("click", function() {
+
+            // This is our API key
+            var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
+
+            var userCity = "minneapolis";
+
+            // Here we are building the URL we need to query the database
+            var weatherURL =    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey;
+            
+            // Here we run our AJAX call to the OpenWeatherMap API
+            $.ajax ({
+            url: weatherURL,
+            method: "GET"
+            })
+                
+            // We store all of the retrieved data inside of an object called "response"
+            .then(function(response) {
+                // Log the queryURL
+                console.log("weatherURL: " + weatherURL);
+                // Log the resulting object
+                console.log(response);
+                
+                var results = response.list;
+
+                for (var i = 0; i < results.length; i++) {
+
+                    var city = response.city.name
+                    var date = results[i].dt_txt;
+                    var temp = Math.floor(results[i].main.temp);
+                    var sky = results[i].weather[0].main;
+                    var image = results[i].weather[0].icon
+
+                    console.log(city);
+                    console.log(date);
+                    console.log(temp + "° F");
+                    console.log(sky);
+                    console.log(image);
+
+                    var weatherDiv = $("<div>");
+                    var weatherImage = $("<img>");
+                    var weatherCity = $("<p>").text(city);
+                    var weatherDay = $("<p>").text("Date: " + date);
+                    var weatherSky = $("<p>").text("Sky: " + sky)
+                    var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
+
+                    weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
+                        
+                    $("#description").append(weatherDiv);
+                    weatherDiv.append(weatherCity);
+                    weatherDiv.append(weatherDay);
+                    weatherDiv.append(weatherSky);
+                    weatherDiv.append(weatherTemp);
+                    weatherDiv.append(weatherImage);
+                }
+                
+            });
+
+        });
+
+    
+
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>
