@@ -6,6 +6,9 @@
     margin-top: 50px;
 }
 
+.table {
+    margin-bottom: 20px;
+}
 .card-action {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 20px !important;
@@ -27,6 +30,7 @@ button {
     margin-left: 140px;
     margin-top: 30px;
 }
+
 .waves-effect {
     background-color: darkgray;
     float: left;
@@ -54,4 +58,18 @@ footer {
     opacity: 0.4;
     margin-top: -50px;
     /* height:100px; */
+}
+.weather {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin-top: 25px;
+    font-size: 30px !important;
+    font-stretch: narrower;
+
+}
+.horizontal {
+    background-color: slategray;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+
+    opacity: 0.6;
+    height: 100px;
 }
