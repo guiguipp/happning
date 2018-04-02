@@ -1,4 +1,5 @@
-/* index */
+
+
 .card-title {
     font-family: 'Monoton', cursive;
     font-size: 40px !important;
@@ -57,11 +58,18 @@ body {
     margin-top: 50px;
     flex: 1 0 auto;
 }
+
+.index-container {
+    min-height: 100%;
+}
 footer {
     bottom: 0;
     background-color: darkslategray !important;
     opacity: 0.4;
     margin-top: -50px;
+<<<<<<< HEAD
+    /*flex-shrink: 0;*/
+=======
     /* height:100px; */
 }
 .weather {
@@ -77,4 +85,5 @@ footer {
 
     opacity: 0.6;
     height: 100px;
+>>>>>>> 340afab90a8c810b2f773f837460a9837ae5963e
 }
