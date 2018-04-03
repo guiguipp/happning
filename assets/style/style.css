@@ -67,23 +67,5 @@ footer {
     background-color: darkslategray !important;
     opacity: 0.4;
     margin-top: -50px;
-<<<<<<< HEAD
     /*flex-shrink: 0;*/
-=======
-    /* height:100px; */
-}
-.weather {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-    margin-top: 25px;
-    font-size: 30px !important;
-    font-stretch: narrower;
-
-}
-.horizontal {
-    background-color: slategray;
-    font-family: 'Barlow Semi Condensed', sans-serif;
-
-    opacity: 0.6;
-    height: 100px;
->>>>>>> 340afab90a8c810b2f773f837460a9837ae5963e
 }

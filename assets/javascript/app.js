@@ -8,7 +8,7 @@ console.log("Hello")
         var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
 
         var userCity = $("#location").val().trim();
-
+        var userCity = "minneapolis";
         // Here we are building the URL we need to query the database
 
         //16-Day Forecast
@@ -67,9 +67,24 @@ console.log("Hello")
                 weatherDiv.append(weatherImage);
             }
 
-            var pickedDate = ($('.datepicker').val());
 
-	        console.log("Date: " + pickedDate);
+            var currentDate = moment ();
+                console.log("Current Date: " + currentDate.format("ll"));
+
+            var pickedDate = $('.datepicker').val();
+                console.log("Date Picked: " + pickedDate);
+
+            // var pickedDate2 = JSON.stringify(pickedDate);
+            // console.log(pickedDate2);
+            
+            // var daysAway = moment(pickedDate).fromNow();
+            //     console.log(daysAway);
+
+            // var formattedPickedDate = moment(pickedDate).format("l");
+                // console.log(formattedPickedDate);
+                
+            // var diffDate = moment(pickedDate).fromNow('minutes');
+                // console.log(diffDate);
             
         });
     });
