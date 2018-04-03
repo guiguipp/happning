@@ -1,15 +1,11 @@
 $("document").ready(function() {
 
 	$(document).ready(function(){
-	$('#date').datepicker({
-		onSelect: function() {
-			var dateObject = $(this).datepicker("getDate")
-		}
 
-		console.log(dateObject)
-  	});
+	$('#date').datepicker();
+	  });
+	  
+	  var pickedDate = $("input")
 
-  	var pickedDate = $('#date').val()
-
-  	console.log(pickedDate)
+	  console.log(pickedDate);
 })
