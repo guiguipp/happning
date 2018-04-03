@@ -1,5 +1,7 @@
 $(document).ready(function () {
 console.log("Hello")
+    $('#date').datepicker();
+
     $("#search").on("click", function() {
         event.preventDefault();
         // This is our API key
@@ -64,6 +66,10 @@ console.log("Hello")
                 weatherDiv.append(weatherTemp);
                 weatherDiv.append(weatherImage);
             }
+
+            var pickedDate = ($('.datepicker').val());
+
+	        console.log("Date: " + pickedDate);
             
         });
     });
