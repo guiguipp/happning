@@ -5,11 +5,19 @@ console.log("Hello")
         // This is our API key
         var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
 
-        var userCity = "minneapolis";
+        var userCity = $("#location").val().trim();
 
         // Here we are building the URL we need to query the database
-        var weatherURL =    "https://api.openweathermap.org/data/2.5/forecast?q=" +
-                            userCity + "&units=imperial&appid=" + weatherAPIKey;
+
+        //16-Day Forecast
+        var weatherURLLong =    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey + "&cnt=16";
+        //1-Day Forecast
+        var weatherURLShort =   "https://api.openweathermap.org/data/2.5/weather?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey;
+        //5-Day Forecast
+        var weatherURL =        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey;
 
         // Here we run our AJAX call to the OpenWeatherMap API
         $.ajax ({
