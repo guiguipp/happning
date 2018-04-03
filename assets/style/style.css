@@ -7,33 +7,38 @@
     margin-top: 50px;
 }
 
+.weather-card {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
 .input-body, .panel-body {
     background-color: white;
 }
 
-
 .table {
     margin-bottom: 20px;
+    clear: both;
+    padding: 10px;
+    margin-left: 40px !important;
 }
 .card-action {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 20px !important;
     color: gray;
-    margin-left: 40px;
+    margin: 55px;
 }
 
 h3 {
-    margin: 60px;
+    margin: 20px;
     font-family: 'Barlow Semi Condensed', sans-serif;
+    border-bottom: 1px solid black;
 }
 
 input {
     color: white;
 }
 
-button {
+.submit {
     float: left;
-    margin-left: 140px;
     margin-top: 30px;
 }
 
@@ -43,7 +48,7 @@ button {
 }
 
 body {
-    background: url(../city_scape.jpg);
+    background: url(../clouds.jpg);
     bottom: 0;
     left: 0;
     display: flex;
@@ -67,10 +72,7 @@ footer {
     background-color: darkslategray !important;
     opacity: 0.4;
     margin-top: -50px;
-<<<<<<< HEAD
-    /*flex-shrink: 0;*/
-=======
-    /* height:100px; */
+    clear: both;
 }
 .weather {
     font-family: 'Barlow Semi Condensed', sans-serif;
@@ -82,8 +84,14 @@ footer {
 .horizontal {
     background-color: slategray;
     font-family: 'Barlow Semi Condensed', sans-serif;
-
     opacity: 0.6;
     height: 100px;
->>>>>>> 340afab90a8c810b2f773f837460a9837ae5963e
+}
+
+.panel-table {
+    margin: 50px;
+}
+
+.btn-floating {
+    float: right;
 }
