@@ -7,31 +7,37 @@
     margin-top: 50px;
 }
 
+.weather-card {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
 .input-body, .panel-body {
     background-color: white;
 }
 
-
 .table {
     margin-bottom: 20px;
+    clear: both;
+    padding: 10px;
+    margin-left: 40px !important;
 }
 .card-action {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 20px !important;
     color: gray;
-    margin-left: 40px;
+    margin: 55px;
 }
 
 h3 {
-    margin: 60px;
+    margin: 20px;
     font-family: 'Barlow Semi Condensed', sans-serif;
+    border-bottom: 1px solid black;
 }
 
 input {
     color: black;
 }
 
-button {
+.submit {
     float: left;
     margin-top: 30px;
 }
@@ -66,6 +72,26 @@ footer {
     background-color: darkslategray !important;
     opacity: 0.4;
     margin-top: -50px;
+    clear: both;
+}
+.weather {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin-top: 25px;
+    font-size: 30px !important;
+    font-stretch: narrower;
 
-    /*flex-shrink: 0;*/
+}
+.horizontal {
+    background-color: slategray;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    opacity: 0.6;
+    height: 100px;
+}
+
+.panel-table {
+    margin: 50px;
+}
+
+.btn-floating {
+    float: right;
 }
