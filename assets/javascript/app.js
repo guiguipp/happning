@@ -5,6 +5,8 @@ console.log("Hello")
         autoclose: true
     });
 
+    $('.modal').modal();
+
     $("#search").on("click", function() {
         event.preventDefault();
         // This is our API key
