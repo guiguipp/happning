@@ -72,7 +72,6 @@ footer {
     background-color: darkslategray !important;
     opacity: 0.4;
     margin-top: -50px;
-<<<<<<< HEAD
     clear: both;
 }
 .weather {
@@ -95,8 +94,4 @@ footer {
 
 .btn-floating {
     float: right;
-=======
-
-    /*flex-shrink: 0;*/
->>>>>>> 28326544ee6bb5c43543c6914d66562d452e4f0e
 }
