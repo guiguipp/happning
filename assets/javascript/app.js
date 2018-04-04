@@ -26,7 +26,7 @@ console.log("Hello")
         var weatherURL =        "https://api.openweathermap.org/data/2.5/forecast?q=" +
                                 userCity + "&units=imperial&appid=" + weatherAPIKey;
 
-        // Here we run our AJAX call to the OpenWeatherMap API
+        // Here we run our AJAX call to the OpenWeatherMap API 
         $.ajax ({
         url: weatherURL,
         method: "GET"
@@ -38,6 +38,7 @@ console.log("Hello")
             console.log("weatherURL: " + weatherURL);
             // Log the resulting object
             console.log(response);
+            console.log("================================");
             
             var results = response.list;
 
@@ -54,6 +55,7 @@ console.log("Hello")
                 console.log(temp + "° F");
                 console.log(sky);
                 console.log(image);
+                console.log("================================");
 
                 var weatherDiv = $("<div>");
                 var weatherImage = $("<img>");
