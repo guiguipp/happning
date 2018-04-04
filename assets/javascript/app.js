@@ -1,6 +1,9 @@
 $(document).ready(function () {
 console.log("Hello")
-    $('#date').datepicker();
+    $('.datepicker').datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
 
     $("#search").on("click", function() {
         event.preventDefault();
