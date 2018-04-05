@@ -28,6 +28,7 @@
 }
 label {
     color: black !important;
+    font-size: 20px !important;
 }
 .input-field {
     color: black;
@@ -105,4 +106,17 @@ footer {
     /*position: fixed;*/
     bottom: 0;
     width: 100%;
+}
+.weather-title {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.weather-card {
+    opacity: 0.6;
+    margin-left: 60px;
+    margin-right: 60px;
+    padding-top: 10px;
+}
+.location {
+    font-size: 15px !important;
 }
