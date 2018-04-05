@@ -63,12 +63,12 @@ console.log("Hello")
                 console.log(temp + "° F");
                 console.log("================================");
 
-                var weatherDiv = $("<div>");
+                // var weatherDiv = $("<div>");
                 var weatherImage = $("<img>");
-                var weatherCity = $("<p>").text(city);
-                var weatherDate = $("<p>").text("Date: " + dateNew);
-                var weatherSky = $("<p>").text("Sky: " + sky)
-                var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
+                // var weatherCity = $("<p>").text(city);
+                // var weatherDate = $("<p>").text("Date: " + dateNew);
+                // var weatherSky = $("<p>").text("Sky: " + sky)
+                // var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
 
                 weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
                     
@@ -80,7 +80,7 @@ console.log("Hello")
                 // weatherDiv.append(weatherTemp);
 
                 //Append Weather Info To Table
-                $("#weather-table > tbody").append("<tr><td>" + weatherImage + "</td><td>" + weatherDate + "</td><td>" + weatherCity + "</td><td>" + weatherSky + "</td><td>" + weatherTemp + "</td></tr>")
+                $("#weather-table > tbody").append("<tr><td>" + weatherImage + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
             }
 
             //Current Date with Moment.js
@@ -89,7 +89,8 @@ console.log("Hello")
 
             //Date Picked
             var pickedDate = $('.datepicker').val();
-                console.log("Date Picked: " + pickedDate);         
+                console.log("Date Picked: " + pickedDate);
+                         
         });
     });
     
