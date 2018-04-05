@@ -1,15 +1,101 @@
+$(document).ready(function () {
+console.log("Hello")
+    $('.datepicker').datepicker({
+        format: "mm/dd/yyyy",
+        autoclose: true
+    });
 
-// function to grab the current location automatically
-$.ajax({
-    url: "https://geoip-db.com/jsonp",
-    jsonpCallback: "callback",
-    dataType: "jsonp",
-    success: function (location) {
+    $('.modal').modal();
 
-        $('#location').val(location.city);
-        console.log("location.city: " + location.city);
-    }
-});
+    $("#search").on("click", function() {
+        event.preventDefault();
+        // This is our API key
+        var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
+
+        var userCity = $("#location").val().trim();
+        var userCity = "minneapolis";
+        // Here we are building the URL we need to query the database
+
+        //16-Day Forecast
+        var weatherURLLong =    "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey + "&cnt=16";
+        //1-Day Forecast
+        var weatherURLShort =   "https://api.openweathermap.org/data/2.5/weather?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey;
+        //5-Day Forecast
+        var weatherURL =        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+                                userCity + "&units=imperial&appid=" + weatherAPIKey;
+
+        // Here we run our AJAX call to the OpenWeatherMap API 
+        $.ajax ({
+        url: weatherURL,
+        method: "GET"
+        })
+            
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            // Log the queryURL
+            console.log("weatherURL: " + weatherURL);
+            // Log the resulting object
+            console.log(response);
+            console.log("================================");
+            
+            var results = response.list;
+
+            for (var i = 0; i < results.length; i++) {
+
+                var city = response.city.name
+                var date = results[i].dt_txt;
+                var temp = Math.floor(results[i].main.temp);
+                var sky = results[i].weather[0].main;
+                var image = results[i].weather[0].icon
+
+                console.log(city);
+                console.log(date);
+                console.log(temp + "° F");
+                console.log(sky);
+                console.log(image);
+                console.log("================================");
+
+                var weatherDiv = $("<div>");
+                var weatherImage = $("<img>");
+                var weatherCity = $("<p>").text(city);
+                var weatherDay = $("<p>").text("Date: " + date);
+                var weatherSky = $("<p>").text("Sky: " + sky)
+                var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
+
+                weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
+                    
+                $("#description").append(weatherDiv);
+                weatherDiv.append(weatherCity);
+                weatherDiv.append(weatherDay);
+                weatherDiv.append(weatherSky);
+                weatherDiv.append(weatherTemp);
+                weatherDiv.append(weatherImage);
+            }
+
+
+            var currentDate = moment ();
+                console.log("Current Date: " + currentDate.format("ll"));
+
+            var pickedDate = $('.datepicker').val();
+                console.log("Date Picked: " + pickedDate);
+
+            // var pickedDate2 = JSON.stringify(pickedDate);
+            // console.log(pickedDate2);
+            
+            // var daysAway = moment(pickedDate).fromNow();
+            //     console.log(daysAway);
+
+            // var formattedPickedDate = moment(pickedDate).format("l");
+                // console.log(formattedPickedDate);
+                
+            // var diffDate = moment(pickedDate).fromNow('minutes');
+                // console.log(diffDate);
+            
+        });
+    });
+})
 
 
 
@@ -146,115 +232,3 @@ console.log("0000000000000000000000000000")
             // }
 
         });
-
-    // Eventful api
-    var eventAPPKey = "8K4g8J4q2z2RFfZf";
-
-    var eventsURL = "http://api.eventful.com/json/events/search?date=today&page_size=10&location=" + userCity + "&t=" + time + "&within=" + radius + "&app_key=" + eventAPPKey;
-
-
-    $.ajax({
-        url: eventsURL,
-        method: "GET"
-    }).then(function (response) {
-        var responseJSON = JSON.parse(response)
-
-        console.log("eventsURL: ", eventsURL);
-
-        const { event } = responseJSON.events;
-
-        for (var i = 0; i < event.length; i++) {
-            const description = event[i].description ? event[i].description : "No Description Available.";
-            const venueAddress = event[i].venue_address ? event[i].venue_address : "No Address Available.";
-
-            const eventInfo = $("<tr>").html("<td><strong>" + event[i].title + "</strong></td><td>" + description + "</td><td> " + event[i].venue_name + "</td><td> " + venueAddress + "</td><td> " + event[i].start_time + "</td>**********************<br>");
-            
-            // const eventInfo = $("<div>").html("<div><p><strong>" + event[i].title + "</strong></p><p>" + description + "</p><p>By: " + event[i].venue_name + "</p><p>Where: " + venueAddress + "</p><p>Starting at: " + event[i].start_time + "</p></div>**********************<br>");
-            $("#well-section").append(eventInfo);
-        }
-
-        //       // Log the data in the console as well
-        console.log(responseJSON.events.event[0].title);
-        console.log(responseJSON.events.event[0].description);
-        console.log(responseJSON.events.event[0].venue_name);
-        console.log(responseJSON.events.event[0].venueAddress);
-        console.log(responseJSON.events.event[0].start_time);
-
-
-        // function initMap() {
-        //     var uluru = { lat: event[0].latitude, lng: event[0].longitude };
-        //     var map = new google.maps.Map($('#map'), {
-        //         zoom: 4,
-        //         center: uluru
-        //     });
-        //     var marker = new google.maps.Marker({
-        //         position: uluru,
-        //         map: map
-        //     });
-        // }
-
-
-
-
-    });
-
-});
-
-
-
-// Meetup API
-// APP key: 46151b4431f28d6e5f33668147529
-
-
-// Eventful API Authentication (api_key needed, but no OAuth needed; outdoor category exists!)
-// api_key: http://api.eventful.com/docs/auth
-// api_key: 8K4g8J4q2z2RFfZf
-// parameters: http://api.eventful.com/docs/events/search
-
-
-
-// Eventbrite API Authentication (api_key & OAuth needed)
-// Ref: https://www.eventbrite.com/developer/v3/api_overview/authentication/#ebapi-oauth-token-flow
-// APP NAME: Group3		
-// KEYS: 33EV54ISFBIHKJNZHQ
-// Client secret: RIHQBFLXFSN5BO6X2WC56N5WP7FIUAIINJGYIW3NADUSKQWUWI
-// Your personal OAuth token: EK4PGCYQL5OFOX6QYAX6
-// Anonymous access OAuth token: PF5UH4TWVTSWZ7ZEUJAI
-
-
-// Version 2 for weatherInfo
-
-            // var results = response.list;
-
-            // for (var i = 0; i < results.length; i++) {
-
-            //     var city = response.city.name
-            //     var date = results[i].dt_txt;
-            //     var temp = Math.floor(results[i].main.temp);
-            //     var sky = results[i].weather[0].main;
-            //     var image = results[i].weather[0].icon
-
-            //     console.log(city);
-            //     console.log(date);
-            //     console.log(temp + "° F");
-            //     console.log(sky);
-            //     console.log(image);
-
-            //     var weatherDiv = $("<div>");
-            //     var weatherImage = $("<img>");
-            //     var weatherCity = $("<p>").text(city);
-            //     var weatherDay = $("<p>").text("Date: " + date);
-            //     var weatherSky = $("<p>").text("Sky: " + sky)
-            //     var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
-
-            //     weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
-
-            //     $(".jumbotron").append(weatherDiv);
-            //     weatherDiv.append(weatherCity);
-            //     weatherDiv.append(weatherDay);
-            //     weatherDiv.append(weatherSky);
-            //     weatherDiv.append(weatherTemp);
-            //     weatherDiv.append(weatherImage);
-            // }
-
-
