@@ -10,9 +10,9 @@
 .weather-card {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
-.input-body, .panel-body {
+/* .input-body, .panel-body {
     background-color: white;
-}
+} */
 
 .table {
     margin-bottom: 20px;
@@ -23,12 +23,18 @@
 .card-action {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 20px !important;
-    color: gray;
-    margin: 55px;
+    color: midnightblue !important;
+    margin: 60px;
+}
+label {
+    color: black !important;
+}
+.input-field {
+    color: black;
 }
 
 h3 {
-    margin: 20px;
+    margin: 80px;
     font-family: 'Barlow Semi Condensed', sans-serif;
     border-bottom: 1px solid black;
 }
@@ -51,9 +57,10 @@ body {
     background: url(../sky_background.jpg);
     bottom: 0;
     left: 0;
-    display: flex;
+    /*display: flex;*/
     min-height: 100vh;
     flex-direction: column;
+    background-attachment: fixed;
 }
 .active {
     font-size: 20px !important;
@@ -67,13 +74,7 @@ body {
 .index-container {
     min-height: 100%;
 }
-footer {
-    bottom: 0;
-    background-color: darkslategray !important;
-    opacity: 0.4;
-    margin-top: -50px;
-    clear: both;
-}
+
 .weather {
     font-family: 'Barlow Semi Condensed', sans-serif;
     margin-top: 25px;
@@ -89,9 +90,19 @@ footer {
 }
 
 .panel-table {
-    margin: 50px;
+    margin: 60px;
 }
 
 .btn-floating {
     float: right;
+}
+
+footer {
+    background-color: darkslategray !important;
+    opacity: 0.4;
+    margin-top: -50px;
+    clear: both;
+    /*position: fixed;*/
+    bottom: 0;
+    width: 100%;
 }
