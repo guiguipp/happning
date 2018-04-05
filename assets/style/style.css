@@ -57,7 +57,7 @@ body {
     background: url(../sky_background.jpg);
     bottom: 0;
     left: 0;
-    display: flex;
+    /*display: flex;*/
     min-height: 100vh;
     flex-direction: column;
     background-attachment: fixed;
@@ -74,13 +74,7 @@ body {
 .index-container {
     min-height: 100%;
 }
-footer {
-    bottom: 0;
-    background-color: darkslategray !important;
-    opacity: 0.4;
-    margin-top: -50px;
-    clear: both;
-}
+
 .weather {
     font-family: 'Barlow Semi Condensed', sans-serif;
     margin-top: 25px;
@@ -101,4 +95,14 @@ footer {
 
 .btn-floating {
     float: right;
+}
+
+footer {
+    background-color: darkslategray !important;
+    opacity: 0.4;
+    margin-top: -50px;
+    clear: both;
+    /*position: fixed;*/
+    bottom: 0;
+    width: 100%;
 }
