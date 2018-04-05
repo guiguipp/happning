@@ -11,7 +11,6 @@ console.log("Hello")
     //Modal
     $('.modal').modal();
 
-
     //Forecast
     $("#search").on("click", function() {
 
