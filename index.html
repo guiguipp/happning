@@ -55,25 +55,26 @@
                   </div>
                   <div class="col s1"></div>
                   <button class="submit btn waves-effect waves-light" type="submit" name="action">Submit
-                  <!-- <button class="btn waves-effect waves-light" type="submit" name="action" id="search">Submit
-                    <i class="material-icons right">send</i> -->
                   </button>
+
               </form>
           </div>
         </div>
-        
+
+          <!-- events -->
         <div class="row">
           <div class="col m12">
               <div class="panel-table panel-default panel-body">
                   <div class="panel-heading">
-                      <h3 class="panel-title">Current Events</h3>
+                      <h4 class="panel-title">Current Events</h4>
                   </div>
                   <div>
                 
                 <div>
-                      <table class="table table-striped">
+                      <table class="table table-striped resonsive-table">
                           <thead>
                               <tr>
+                                  <th><i class="material-icons">favorite</i></th>
                                   <th>Event</th>
                                   <th>Date</th>
                                   <th>Time</th>
@@ -81,7 +82,11 @@
                               </tr>
                           </thead>
                           <tbody id="event-favorites">
-
+                                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                                  <td id="event-title"></td>
+                                  <td id="event-date"></td>
+                                  <td id="event-time"></td>
+                                  <td id="event-type"></td>
                           </tbody>
                       </table>
                   </div>
