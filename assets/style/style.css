@@ -10,9 +10,9 @@
 .weather-card {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
-.input-body, .panel-body {
+/* .input-body, .panel-body {
     background-color: white;
-}
+} */
 
 .table {
     margin-bottom: 20px;
@@ -23,12 +23,18 @@
 .card-action {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 20px !important;
-    color: gray;
-    margin: 55px;
+    color: midnightblue !important;
+    margin: 60px;
+}
+label {
+    color: black !important;
+}
+.input-field {
+    color: black;
 }
 
 h3 {
-    margin: 20px;
+    margin: 80px;
     font-family: 'Barlow Semi Condensed', sans-serif;
     border-bottom: 1px solid black;
 }
@@ -54,6 +60,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-attachment: fixed;
 }
 .active {
     font-size: 20px !important;
@@ -89,7 +96,7 @@ footer {
 }
 
 .panel-table {
-    margin: 50px;
+    margin: 60px;
 }
 
 .btn-floating {
