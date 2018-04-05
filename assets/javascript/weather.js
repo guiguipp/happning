@@ -72,7 +72,7 @@ console.log("Hello")
 
                 weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
                     
-                $("#description").append(weatherDiv);
+                $(".weather-output").append(weatherDiv);
                 weatherDiv.append(weatherDate);
                 weatherDiv.append(weatherCity);
                 weatherDiv.append(weatherImage);
