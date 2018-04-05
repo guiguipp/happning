@@ -25,7 +25,7 @@ console.log("Hello")
     
         //Days of Weather Needed
         var days = ""; //Will Be Used In Final Version
-        var days = 3
+        var days = 6
             
         // Here we are building the URL we need to query the database
         var weatherURL =    "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
@@ -72,12 +72,15 @@ console.log("Hello")
 
                 weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
                     
-                $(".weather-output").append(weatherDiv);
-                weatherDiv.append(weatherDate);
-                weatherDiv.append(weatherCity);
-                weatherDiv.append(weatherImage);
-                weatherDiv.append(weatherSky);
-                weatherDiv.append(weatherTemp);    
+                // $(".weather-output").append(weatherDiv);
+                // weatherDiv.append(weatherImage);
+                // weatherDiv.append(weatherDate);
+                // weatherDiv.append(weatherCity);
+                // weatherDiv.append(weatherSky);
+                // weatherDiv.append(weatherTemp);
+
+                //Append Weather Info To Table
+                $("#weather-table > tbody").append("<tr><td>" + weatherImage + "</td><td>" + weatherDate + "</td><td>" + weatherCity + "</td><td>" + weatherSky + "</td><td>" + weatherTemp + "</td></tr>")
             }
 
             //Current Date with Moment.js
