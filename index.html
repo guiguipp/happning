@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Chivo|Marvel|Monoton|Reem+Kufi" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="assets/style/style.css"/>
+
     <title>Trial One</title>
 </head>
 <body>
@@ -68,9 +69,8 @@
                   <div class="panel-heading">
                       <h4 class="panel-title">Current Events</h4>
                   </div>
-                  <div>
-                
                 <div>
+                  <div>
                       <table class="table table-striped resonsive-table">
                           <thead>
                               <tr>
@@ -81,12 +81,14 @@
                                   <th>Type</th>
                               </tr>
                           </thead>
-                          <tbody id="event-favorites">
-                                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
-                                  <td id="event-title"></td>
-                                  <td id="event-date"></td>
-                                  <td id="event-time"></td>
-                                  <td id="event-type"></td>
+                          <tbody id="event-list">
+                            <tr>
+                              <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                              <td id="event-title"></td>
+                              <td id="event-date"></td>
+                              <td id="event-time"></td>
+                              <td id="event-type"></td>
+                            </tr>
                           </tbody>
                       </table>
                   </div>
@@ -103,7 +105,18 @@
       <div id="modal1" class="modal">
         <div class="modal-content">
           <h4>Favorite Activities</h4>
-        <p>A bunch of text</p>
+          <table>
+            <thead>
+              <tr>
+                  <th><i class="material-icons">favorite</i></th>
+                  <th>Event</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="favorite-list"></tbody>
+          </table>
           </div>
         <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
@@ -145,5 +158,6 @@
     
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
+    <script type="text/javascript" src="./assets/javascript/jordan_javascript.js"></script>
 </body>
 </html>
