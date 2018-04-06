@@ -10,9 +10,6 @@
 .weather-card {
     font-family: 'Barlow Semi Condensed', sans-serif;
 }
-/* .input-body, .panel-body {
-    background-color: white;
-} */
 
 .table {
     margin-bottom: 20px;
@@ -93,6 +90,8 @@ body {
 .panel-table {
     margin: 60px;
 }
+
+
 
 .btn-floating {
     float: right;
