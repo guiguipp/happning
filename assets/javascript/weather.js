@@ -25,7 +25,7 @@ console.log("Hello")
     
         //Days of Weather Needed
         var days = ""; //Will Be Used In Final Version
-        var days = 3
+        var days = 6
             
         // Here we are building the URL we need to query the database
         var weatherURL =    "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
@@ -63,21 +63,24 @@ console.log("Hello")
                 console.log(temp + "° F");
                 console.log("================================");
 
-                var weatherDiv = $("<div>");
+                // var weatherDiv = $("<div>");
                 var weatherImage = $("<img>");
-                var weatherCity = $("<p>").text(city);
-                var weatherDate = $("<p>").text("Date: " + dateNew);
-                var weatherSky = $("<p>").text("Sky: " + sky)
-                var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
+                // var weatherCity = $("<p>").text(city);
+                // var weatherDate = $("<p>").text("Date: " + dateNew);
+                // var weatherSky = $("<p>").text("Sky: " + sky)
+                // var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
 
                 weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
                     
-                $(".weather-output").append(weatherDiv);
-                weatherDiv.append(weatherDate);
-                weatherDiv.append(weatherCity);
-                weatherDiv.append(weatherImage);
-                weatherDiv.append(weatherSky);
-                weatherDiv.append(weatherTemp);    
+                // $(".weather-output").append(weatherDiv);
+                // weatherDiv.append(weatherImage);
+                // weatherDiv.append(weatherDate);
+                // weatherDiv.append(weatherCity);
+                // weatherDiv.append(weatherSky);
+                // weatherDiv.append(weatherTemp);
+
+                //Append Weather Info To Table
+                $("#weather-table > tbody").append("<tr><td>" + weatherImage + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
             }
 
             //Current Date with Moment.js
@@ -86,7 +89,8 @@ console.log("Hello")
 
             //Date Picked
             var pickedDate = $('.datepicker').val();
-                console.log("Date Picked: " + pickedDate);         
+                console.log("Date Picked: " + pickedDate);
+                         
         });
     });
     
