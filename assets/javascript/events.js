@@ -1,18 +1,28 @@
-// $("#from").datepicker();
+// $("#date").datepicker().format("YYYY MM DD");
 // $("#to").datepicker();
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
 
+// THis is the time format the API is requesting  
 var dateFormat = "YYYYMMDD"; 
 
 $("#search").on("click", function (event) {
     event.preventDefault();
-    // console.log("Entered date: " + $("#date").val())
-    var dateEntered = $("#date").val();
+    
+    /* This is the format of the date we got from the date picker
+    We need to specify its format, or moment.js is freaking out
+    (because it thinks we are converting a random string, and falls
+    back to regular js */
+    var dateEntered = moment($("#date").val(),"mmm dd yyyy");
     var nextDay = moment(dateEntered).add(1, 'day');
-    console.log("nextDay before reformatting:" + nextDay);
     
     var reformattedDate = moment(dateEntered).format(dateFormat);
     var reformattedNextDay = moment(nextDay).format(dateFormat);
-    // console.log("reformattedDate: " + reformattedDate);
+    console.log("reformattedDate: " + reformattedDate);
+    console.log("reformattedNextDay: " + reformattedNextDay);
+    
+    // add 00 because that's how the API wants us to structure the date in our query
     var fromDate = reformattedDate + "00"; 
     var toDate = reformattedNextDay + "00" 
     console.log("fromDate: " + fromDate);
@@ -30,11 +40,10 @@ console.log("userCity:", userCity);
 // $("#to").val("");
 
 
-var eventAPIKey = "R2SmVPVrHGFhKdGX"; //R2SmVPVrHGFhKdGX.
+var eventAPIKey = "R2SmVPVrHGFhKdGX";
 var eventsURL = "http://api.eventful.com/json/events/search?...&date=" + fromDate + "-" + toDate + "&page_size=10&location=" + userCity + "&app_key=" + eventAPIKey;
-// console.log("eventsURL: " , eventsURL);
 
-// output format to JSON: http://api.eventful.com/docs/formats 
+// output format to JSON see: http://api.eventful.com/docs/formats 
 
 
 $.ajax({
