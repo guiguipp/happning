@@ -7,6 +7,18 @@ console.log("Hello")
         format: "mm/dd/yyyy",
         autoclose: true
     });
+
+    //Location 
+    // $.ajax({
+    //     url: "https://geoip-db.com/jsonp",
+    //     jsonpCallback: "callback",
+    //     dataType: "jsonp",
+    //     success: function (location) {
+    
+    //         $(".card-content").val(location.city);
+    //         console.log(location.city)
+    //     }
+    // });
     
     //Modal
     $('.modal').modal();
@@ -54,7 +66,7 @@ console.log("Hello")
                 var dateNew = moment.unix(date).format('L');
                 var temp = Math.floor(results[i].temp.max);
                 var sky = results[i].weather[0].main;
-                var image = results[i].weather[0].icon
+                var image = "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png"
 
                 console.log(dateNew);
                 console.log(city);
@@ -64,13 +76,13 @@ console.log("Hello")
                 console.log("================================");
 
                 // var weatherDiv = $("<div>");
-                var weatherImage = $("<img>");
+                // var weatherImage = $("<img>");
                 // var weatherCity = $("<p>").text(city);
                 // var weatherDate = $("<p>").text("Date: " + dateNew);
                 // var weatherSky = $("<p>").text("Sky: " + sky)
                 // var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
 
-                weatherImage.attr("src", "http://openweathermap.org/img/w/" + image + ".png")
+                // $("#weatherImage").attr("src", "http://openweathermap.org/img/w/" + image + ".png")
                     
                 // $(".weather-output").append(weatherDiv);
                 // weatherDiv.append(weatherImage);
@@ -80,7 +92,7 @@ console.log("Hello")
                 // weatherDiv.append(weatherTemp);
 
                 //Append Weather Info To Table
-                $("#weather-table > tbody").append("<tr><td>" + weatherImage + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
+                $("#weather-table > tbody").append("<tr><td>" + "<img src=" + image + ">" + "</img>"  + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
             }
 
             //Current Date with Moment.js
