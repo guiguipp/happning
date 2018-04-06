@@ -18,7 +18,7 @@ $.ajax({
     dataType: "jsonp",
     success: function (location) {
 
-        $('#location').val(location.city);
+        // $('#location').val(location.city);
         console.log("location.city: " + location.city);
     }
 });
