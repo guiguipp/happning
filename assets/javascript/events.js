@@ -35,9 +35,6 @@ var userCity = $("#location").val().trim();
 console.log("userCity:", userCity);
 
 
-// $("#location").val("");
-// $("#from").val("");
-// $("#to").val("");
 
 
 var eventAPIKey = "R2SmVPVrHGFhKdGX";
@@ -57,19 +54,43 @@ $.ajax({
     const { event } = responseJSON.events;
 
     for (var i = 0; i < event.length; i++) {
-        const description = event[i].description ? event[i].description : "No Description yet. Come check later!";
-        // const venueAddress = event[i].venue_address ? event[i].venue_address : "No Address Available.";
+        var e = event[i];
+        var description = e.description ? e.description : "No Description yet. Come check later!";
 
-        const eventInfo = $("<tr>").html("<td class='place for heart'></td> <td class='title'> <strong>" + event[i].title + "</strong></td><td class='description'>" + description + "</td><td class='date'>" + event[i].start_time) 
-        // event[i].venue_name + "</td><iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDwCKEyy5bmqNtKpj_zaIYN8QL-DSE0DAc&q=" + 
-        // response.events.venue_name + " allowfullscreen'></iframe><td>" + event[i].start_time + "</td>**********************<br>");
-        // 
-        //  <th>Event Title</th>
-        // <th>Event Description</th>
-        // <th>Date</th>
-        // <th>Time</th>
+        // This is an object constructor to create each event retrieved from the API as an object
+        function EventDisplayed(id, icon, title, description, start) {
+            this.id = id;
+            this.icon = icon;
+            this.title = title;
+            this.description = description;
+            this.start = start;
+        }
 
-        $("#event-list").append(eventInfo);
+        // and this is how objects can be dynamically created with properties of the constructor and elements of the API + the for loop
+        var newEvent = new EventDisplayed(
+            "<id= 'event" + i + "'>",
+            "<id= 'event" + i + "'>" + "favorite_border",
+            e.title,
+            description,
+            e.start_time,
+        )
+        // those are variable to add html tags dynamically
+            var eInfo = "<tr class='event'>"; 
+            var iconTag = "<td class='icon'> <i class='material-icons'>" + newEvent.icon
+            var eEmphasis = "<td class='title'><strong>"
+            var eDescription = "<td class ='description'>"
+            var eDate = "<td class='date'>"
+            
+            // and here I create the row with the attributes of the object + the HTML tags
+            var eRow = `${eInfo} ${iconTag} ${eEmphasis} ${newEvent.title} ${eDescription} ${newEvent.description} ${eDate} ${newEvent.start}`;
+            console.log(eRow);
+        
+            $("#event-list").append(eRow);
+
+            // the goal is to be able to #1 have an id for each event #2 have the icon as an attribute (that can then be changed)
+      
+
+
     }
 
 });
