@@ -8,18 +8,65 @@ console.log("Hello")
         autoclose: true
     });
 
-    //Location 
-    // $.ajax({
-    //     url: "https://geoip-db.com/jsonp",
-    //     jsonpCallback: "callback",
-    //     dataType: "jsonp",
-    //     success: function (location) {
+    //Current Date with Moment.js
+    var currentDate = moment ();
+        console.log("Current Date: " + currentDate.format("L"));
+
+    //Current Location Weather Function
+    function currentWeather () {
+        
+        // Here we run our AJAX for Geo Location
+        $.ajax({
+            url: "https://geoip-db.com/jsonp",
+            jsonpCallback: "callback",
+            dataType: "jsonp",
+            success: function (location) {
+                console.log("Current Location: " + location.city);
+
+                // This is our API key
+                var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
     
-    //         $(".card-content").val(location.city);
-    //         console.log(location.city)
-    //     }
-    // });
+                //City Input
+                var userCity = location.city;
+            
+                // Here we are building the URL we need to query the database
+                var weatherURL =    "https://api.openweathermap.org/data/2.5/weather?q=" +
+                                    userCity + "&units=imperial&appid=" + weatherAPIKey;
     
+                // Here we run our AJAX call to the OpenWeatherMap API 
+                $.ajax ({
+                    url: weatherURL,
+                    method: "GET"
+                })
+                
+                // We store all of the retrieved data inside of an object called "response"
+                .then (function(response) {
+                    console.log(response);
+                    console.log(response.name);
+                    console.log(Math.floor(response.main.temp) + "° F");
+                    console.log(response.weather[0].description);
+                    console.log(response.weather[0].icon);
+
+                    var userWeatherCity = response.name;
+                    var userWeatherTemp = (Math.floor(response.main.temp) + "° F");
+                    var userWeatherDescription = response.weather[0].description;
+                    var userWeatherDiv = $("<div>");
+
+                    $("#location-weather").append(userWeatherDiv);
+                    userWeatherDiv.append(userWeatherCity);
+                    userWeatherDiv.append(userWeatherTemp);
+                    userWeatherDiv.append(userWeatherDescription);
+
+        
+                });
+            }
+
+        });
+
+    };
+
+    currentWeather();
+
     //Modal
     $('.modal').modal();
     
@@ -65,7 +112,7 @@ console.log("Hello")
                 var date = results[i].dt;
                 var dateNew = moment.unix(date).format('L');
                 var temp = Math.floor(results[i].temp.max);
-                var sky = results[i].weather[0].main;
+                var sky = results[i].weather[0].description;
                 var image = "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png"
 
                 console.log(dateNew);
@@ -75,35 +122,15 @@ console.log("Hello")
                 console.log(temp + "° F");
                 console.log("================================");
 
-                // var weatherDiv = $("<div>");
-                // var weatherImage = $("<img>");
-                // var weatherCity = $("<p>").text(city);
-                // var weatherDate = $("<p>").text("Date: " + dateNew);
-                // var weatherSky = $("<p>").text("Sky: " + sky)
-                // var weatherTemp = $("<p>").text("Temperature: " + temp + "° F");
-
-                // $("#weatherImage").attr("src", "http://openweathermap.org/img/w/" + image + ".png")
-                    
-                // $(".weather-output").append(weatherDiv);
-                // weatherDiv.append(weatherImage);
-                // weatherDiv.append(weatherDate);
-                // weatherDiv.append(weatherCity);
-                // weatherDiv.append(weatherSky);
-                // weatherDiv.append(weatherTemp);
-
                 //Append Weather Info To Table
                 $("#weather-table > tbody").append("<tr><td>" + "<img src=" + image + ">" + "</img>"  + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
             }
 
-            //Current Date with Moment.js
-            var currentDate = moment ();
-                console.log("Current Date: " + currentDate.format("L"));
-
             //Date Picked
             var pickedDate = $('.datepicker').val();
-                console.log("Date Picked: " + pickedDate);
-                         
+                console.log("Date Picked: " + pickedDate);               
         });
+
     });
     
 })
