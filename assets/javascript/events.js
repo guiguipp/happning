@@ -30,7 +30,7 @@ var eventsURL = "http://api.eventful.com/json/events/search?...&date=" + fromDat
 
 var eventsArray = [];
 var favIcon = "favorite";
-var unFavIcon = "favorite-border";
+var unFavIcon = "favorite_border";
 
 $.ajax({
     url: eventsURL,
@@ -62,8 +62,8 @@ $.ajax({
             var newEvent = new EventDisplayed(
                 "<td id='obj-" + timeStamp + "-" + i + ">",
                 "<td class='icon'> <i class='material-icons' id='icon-" + timeStamp + "-" + i + "'>" + unFavIcon + "</i>",
-                "border",
-                "favorite-border",
+                "favorite",
+                "favorite_border",
                 false,
                 e.title,
                 description,
