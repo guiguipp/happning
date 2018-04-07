@@ -46,9 +46,34 @@ $(document).ready(function() {
         var favIcon = $(this).parent()
         var favRow = $(this).parent().siblings();
 
-        $(this).text("favorite");
+        var heartStatus = $(this).attr("heart");
 
+
+        if (heartStatus === "empty") {
+
+
+            $(this).text("favorite"); 
+
+            console.log(favRow)
+
+            $(this).attr("heart", "full")
+
+            var row = $("<tr>");
+            favIcon.clone().appendTo(row)
+            favRow.clone().appendTo(row)
+            row.appendTo("#favorite-list");
+
+        } else if (heartStatus === "full") {
+
+            $(this).attr("heart", "empty")
+
+            $(this).text("favorite_border")
+
+            favIcon.replaceWith("")
+            favRow.replaceWith("")
+        }
         // $("#favorite-list").empty()
+
 
         // var favTable = new Array();
 
@@ -61,14 +86,12 @@ $(document).ready(function() {
         //     });
 
         // // console.log(favTable)
-        //     favTable.shift();
+
+            
         // })
 
-        console.log(favRow)
-        var row = $("<tr>");
-        favIcon.clone().appendTo(row)
-        favRow.clone().appendTo(row)
-        row.appendTo("#favorite-list");
+        
+
         // $("#favorite-list").html("<tr>")
     });
     //     // var val = $("#favorite-item").val();
