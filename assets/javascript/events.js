@@ -46,56 +46,52 @@ var eventsURL = "http://api.eventful.com/json/events/search?...&date=" + fromDat
 $.ajax({
     url: eventsURL,
     method: "GET"
-}).then(function (response) {
-    var responseJSON = JSON.parse(response)
+    }).then(function (response) {
+        var responseJSON = JSON.parse(response)
+        console.log("eventsURL: ", eventsURL);
 
-    console.log("eventsURL: ", eventsURL);
+        const { event } = responseJSON.events;
 
-    const { event } = responseJSON.events;
+        for (var i = 0; i < event.length; i++) {
+            var e = event[i];
+            var description = e.description ? e.description : "No Description yet. Come check later!";
 
-    for (var i = 0; i < event.length; i++) {
-        var e = event[i];
-        var description = e.description ? e.description : "No Description yet. Come check later!";
+            // This is an object constructor to create each event retrieved from the API as an object
+            function EventDisplayed(id, icon, title, description, start) {
+                this.id = id;
+                this.icon = icon;
+                this.title = title;
+                this.description = description;
+                this.start = start;
+            }
 
-        // This is an object constructor to create each event retrieved from the API as an object
-        function EventDisplayed(id, icon, title, description, start) {
-            this.id = id;
-            this.icon = icon;
-            this.title = title;
-            this.description = description;
-            this.start = start;
-        }
-
-        // and this is how objects can be dynamically created with properties of the constructor and elements of the API + the for loop
-        var newEvent = new EventDisplayed(
-            "<id= 'event" + i + "'>",
-            "<id= 'event" + i + "'>" + "favorite_border",
-            e.title,
-            description,
-            e.start_time,
-        )
-        // those are variable to add html tags dynamically
-            var eInfo = "<tr class='event'>"; 
-            var iconTag = "<td class='icon'> <i class='material-icons'>" + newEvent.icon
-            var eEmphasis = "<td class='title'><strong>"
-            var eDescription = "<td class ='description'>"
-            var eDate = "<td class='date'>"
+            // and this is how objects can be dynamically created with properties of the constructor and elements of the API + the "for loop"
+            var newEvent = new EventDisplayed(
+                "<td id='obj-" + i + ">",
+                "<td class='icon'> <i class='material-icons' id='icon" + i + "'>" + "favorite_border" + "</i>",
+                e.title,
+                description,
+                e.start_time,
+            )
+            // those are variable to add html tags dynamically
+                var eInfo = "<tr class='event'>"; 
+                var idTag = "<td id='obj-"; 
+                // var iconTag = "<td class='icon'> <i class='material-icons'>" + newEvent.icon
+                var eEmphasis = "<td class='title'><strong>"
+                var eDescription = "<td class ='description'>"
+                var eDate = "<td class='date'>"
+                
+                // and here I create the row with the attributes of the object + the HTML tags
+                var eRow = `${eInfo} ${newEvent.id} ${newEvent.icon} ${eEmphasis} ${newEvent.title} ${eDescription} ${newEvent.description} ${eDate} ${newEvent.start}`;
+                console.log(eRow);
             
-            // and here I create the row with the attributes of the object + the HTML tags
-            var eRow = `${eInfo} ${iconTag} ${eEmphasis} ${newEvent.title} ${eDescription} ${newEvent.description} ${eDate} ${newEvent.start}`;
-            console.log(eRow);
-        
-            $("#event-list").append(eRow);
+                $("#event-list").append(eRow);
 
-            // the goal is to be able to #1 have an id for each event #2 have the icon as an attribute (that can then be changed)
-      
-
-
-    }
-
+                // the goal is to be able to #1 have an id for each event #2 have the icon as an attribute (that can then be changed)
+        }
+    });
 });
-
-
-
+$(document).on("click", ".material-icons", function (){
+    getId = ($(this).attr("id"))
+    console.log(getId);
 });
-
