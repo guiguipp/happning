@@ -1,140 +1,97 @@
+// $("#date").datepicker().format("YYYY MM DD");
+// $("#to").datepicker();
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
 
-
-$.ajax({
-    url: "https://geoip-db.com/jsonp",
-    jsonpCallback: "callback",
-    dataType: "jsonp",
-    success: function (location) {
-
-        $('#location').val(location.city);
-        console.log("location.city: " + location.city);
-    }
-});
-
-
-
-$(".submit").on("click", function () {
-    $("#location").val("");
-});
-
-
-$("#from").datepicker();
-$("#to").datepicker();
-
-
+// THis is the time format the API is requesting  
+var dateFormat = "YYYYMMDD"; 
 
 $("#search").on("click", function (event) {
-    
     event.preventDefault();
-
-
-
-    var dateFormat = "YYYYMMDD",
-        from = $("#from")
-            .datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 3
-            })
-            .on("change", function () {
-                to.datepicker("option", "minDate", getDate(this));
-            }),
-        to = $("#to").datepicker({
-            defaultDate: "+1w",
-            changeMonth: true,
-            numberOfMonths: 3
-        })
-            .on("change", function () {
-                from.datepicker("option", "maxDate", getDate(this));
-            });
-
-    function getDate(element) {
-        var date;
-        try {
-            date = $.datepicker.parseDate(dateFormat, element.value);
-        } catch (error) {
-            date = null;
-        }   
-
-        return date;
-    }
-
-
-var start = moment($(from).val()).format(dateFormat);
-var end = moment($(to).val()).format(dateFormat);
-
-var days = moment($(to).val()).diff(moment($(from).val()), 'days');
+    
+    /* This is the format of the date we got from the date picker
+    We need to specify its format, or moment.js is freaking out
+    (because it thinks we are converting a random string, and falls
+    back to regular js */
+    var dateEntered = moment($("#date").val(),"mmm dd yyyy");
+    var nextDay = moment(dateEntered).add(1, 'day');
+    
+    var reformattedDate = moment(dateEntered).format(dateFormat);
+    var reformattedNextDay = moment(nextDay).format(dateFormat);
+    console.log("reformattedDate: " + reformattedDate);
+    console.log("reformattedNextDay: " + reformattedNextDay);
+    
+    // add 00 because that's how the API wants us to structure the date in our query
+    var fromDate = reformattedDate + "00"; 
+    var toDate = reformattedNextDay + "00" 
+    console.log("fromDate: " + fromDate);
+    console.log("toDate: " + toDate);
 
 
 var userCity = $("#location").val().trim();
-var radius = $("#radius").val().trim();
 
 
 console.log("userCity:", userCity);
 
 
-$("#location").val("");
-$("#radius").val("10 mi");
-$("#from").val("");
-$("#to").val("");
 
 
+var eventAPIKey = "R2SmVPVrHGFhKdGX";
+var eventsURL = "http://api.eventful.com/json/events/search?...&date=" + fromDate + "-" + toDate + "&page_size=10&location=" + userCity + "&app_key=" + eventAPIKey;
 
-// ***********************************************************
-// Weather Part
+// output format to JSON see: http://api.eventful.com/docs/formats 
 
-// var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
-
-// var weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
-//     userCity + "&cnt=" + days + "&units=imperial&appid=" + weatherAPIKey;
-
-
-// $.ajax({
-//     url: weatherURL,
-//     method: "GET"
-// }).then(function (response) {
-//         console.log(response);
-
-//         const results = response.list;
-
-//         results.forEach(function(result) {
-//             const weatherDiv = $("<div>").html("<p><strong>" + response.city.name + "</strong></p><br><p>Low: " + Math.round(results.temp.min) + " F </p><p>High: " + Math.round(results.temp.max) + " F </p><p>Sky: " + 
-//             results.weather[0].description + "</p><p><img src='http://openweathermap.org/img/w/" + results.weather[0].icon + ".png'></p>")
-//         $("#weather-out").append(weatherDiv);
-//     });
-
-
-// ***********************************************************
-
-
-
-var eventAPPKey = "8K4g8J4q2z2RFfZf";
-var eventsURL = "http://api.eventful.com/rest/events/search?...&date=" + start + "00-" + end + "00&page_size=10&location=" + userCity + "&within=" + radius + "&api_key=" + eventAPIKey;
 
 $.ajax({
     url: eventsURL,
     method: "GET"
-}).then(function (response) {
-    var responseJSON = JSON.parse(response)
+    }).then(function (response) {
+        var responseJSON = JSON.parse(response)
+        console.log("eventsURL: ", eventsURL);
 
-    console.log("eventsURL: ", eventsURL);
+        const { event } = responseJSON.events;
 
-    const { event } = responseJSON.events;
+        for (var i = 0; i < event.length; i++) {
+            var e = event[i];
+            var description = e.description ? e.description : "No Description yet. Come check later!";
 
-    for (var i = 0; i < event.length; i++) {
-        const description = event[i].description ? event[i].description : "No Description Available.";
-        const venueAddress = event[i].venue_address ? event[i].venue_address : "No Address Available.";
+            // This is an object constructor to create each event retrieved from the API as an object
+            function EventDisplayed(id, icon, title, description, start) {
+                this.id = id;
+                this.icon = icon;
+                this.title = title;
+                this.description = description;
+                this.start = start;
+            }
 
-        const eventInfo = $("<tr>").html("<td><strong>" + event[i].title + "</strong></td><td>" + description + "</td><td> " + 
-        event[i].venue_name + "</td><iframe width='600' height='450' frameborder='0' style='border:0' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDwCKEyy5bmqNtKpj_zaIYN8QL-DSE0DAc&q=" + 
-        response.events.venue_name + " allowfullscreen'></iframe><td>" + event[i].start_time + "</td>**********************<br>");
+            // and this is how objects can be dynamically created with properties of the constructor and elements of the API + the "for loop"
+            var newEvent = new EventDisplayed(
+                "<td id='obj-" + i + ">",
+                "<td class='icon'> <i class='material-icons' id='icon" + i + "'>" + "favorite_border" + "</i>",
+                e.title,
+                description,
+                e.start_time,
+            )
+            // those are variable to add html tags dynamically
+                var eInfo = "<tr class='event'>"; 
+                var idTag = "<td id='obj-"; 
+                // var iconTag = "<td class='icon'> <i class='material-icons'>" + newEvent.icon
+                var eEmphasis = "<td class='title'><strong>"
+                var eDescription = "<td class ='description'>"
+                var eDate = "<td class='date'>"
+                
+                // and here I create the row with the attributes of the object + the HTML tags
+                var eRow = `${eInfo} ${newEvent.id} ${newEvent.icon} ${eEmphasis} ${newEvent.title} ${eDescription} ${newEvent.description} ${eDate} ${newEvent.start}`;
+                console.log(eRow);
+            
+                $("#event-list").append(eRow);
 
-        $("#event-favorites").append(eventInfo);
-    }
-
+                // the goal is to be able to #1 have an id for each event #2 have the icon as an attribute (that can then be changed)
+        }
+    });
 });
-
-
-
+$(document).on("click", ".material-icons", function (){
+    getId = ($(this).attr("id"))
+    console.log(getId);
 });
-

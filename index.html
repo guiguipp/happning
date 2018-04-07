@@ -32,9 +32,11 @@
         <div class="card horizontal">
           <div class="card-image">
             <!-- <img src="style/city_scape.jpg"> -->
-            <span class="card-title weather-card">weather</span>
+            <div class="card-title weather-card">weather</div>
+            <div class="card-content"></div>
+              <div id="location-weather"></div>
           </div>
-          <div class="card-content">
+          
           </div>
         </div>
       </div>
@@ -48,12 +50,16 @@
               <form class="col s12">
                   <div class="input-field col s4">
                     <input id="location" type="text" class="validate">
-                    <label class="active" for="location">Where are you? (zip code or city)</label>
+                    <label class="active" for="location">Where? (zip code or city)</label>
                   </div>
                   <div class="input-field col s4">
                     <input id="date" type="text" class="datepicker">
-                    <label class="active"  for="date">When do you need some plans?</label>
+                    <label class="active"  for="date">When?</label>
                   </div>
+                  <!-- <div class="input-field col s4">
+                    <input id="to" type="text" class="datepicker">
+                    <label class="active"  for="date">When do you need some plans?</label>
+                  </div> -->
                   <div class="col s1"></div>
                   <button class="submit btn waves-effect waves-light" name="action" id="search">Submit
                   </button>
@@ -62,7 +68,7 @@
           </div>
           <div class="input-field col s4">
 <!-- weather -->
-        <div class="row">
+  <div class="row">
     <div class="col s12 m12">
       <div class="card blue-grey darken-1 weather-card">
         <div class="card-content white-text">
@@ -81,7 +87,6 @@
             </thead>
             <tbody></tbody>
         </table>
-        </div>
       </div>
     </div>
           <!-- events -->
@@ -93,23 +98,31 @@
                   </div>
                 <div>
                   <div>
-                      <table class="table table-striped resonsive-table">
+                      <table id="event-list" class="table table-striped responsive-table highlight">
                           <thead>
                               <tr>
-                                  <th><i class="material-icons">favorite</i></th>
-                                  <th>Event</th>
-                                  <th>Date</th>
-                                  <th>Time</th>
-                                  <th>Type</th>
+                                  <th></th>
+                                  <th>Event Title</th>
+                                  <th>Description</th>
+                                  <th>Date/Time</th>
+                                  <!-- <th>Time</th>
+                                  <th>Type</th> -->
                               </tr>
                           </thead>
-                          <tbody id="event-list">
-                            <tr>
+                          <tbody>
+                            <tr class="favorite-row">
                               <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
-                              <td id="event-title"></td>
-                              <td id="event-date"></td>
-                              <td id="event-time"></td>
-                              <td id="event-type"></td>
+                              <td id="event-title">Pub Crawl</td>
+                              <td id="event-description">Go to as many bars as we can</td>
+                              <td id="event-date/time">4/20 10pm</td>
+                              <!-- <td id="event-type"></td> -->
+                            </tr>
+                            <tr class="favorite-row">
+                              <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                              <td id="event-title">Twins Game</td>
+                              <td id="event-description">Vs the Yankees</td>
+                              <td id="event-date/time">3/30 3:30pm</td>
+                              <!-- <td id="event-type"></td> -->
                             </tr>
                           </tbody>
                       </table>
@@ -134,10 +147,12 @@
             <thead>
               <tr>
                   <th><i class="material-icons">favorite</i></th>
-                  <th>Event</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Type</th>
+                  <th>Event Title</th>
+                  <th>Event Description</th>
+                  <th>Date/Time</th>
+                  
+                  <!-- <th>Date</th>
+                  <th>Time</th> -->
               </tr>
             </thead>
             <tbody id="favorite-list"></tbody>
