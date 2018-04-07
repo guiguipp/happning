@@ -63,6 +63,7 @@ body {
     flex-direction: column;
     background-attachment: fixed;
 }
+
 .active {
     font-size: 20px !important;
 }
