@@ -118,6 +118,10 @@ footer {
     margin-right: 60px;
     padding-top: 10px;
 }
+#weather-table {
+    margin-left: 60px;
+    margin-right: 60px;
+}
 .location {
     font-size: 15px !important;
 }
