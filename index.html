@@ -30,9 +30,11 @@
 
       <!-- Current Location Weather -->
       <div class="col s4 m4">
+
         <div class="panel blue-grey darken-1 weather-card">
           <div class="panel-content white-text">
-            <span class="panel-title weather-title">Weather</span>
+            <span class="panel-title weather-title">Current Weather</span>
+
             <br>
             <p class="center-align" id="location-weather"></p>
           </div>
@@ -50,6 +52,7 @@
     <div class="card-action">
     <div class="row input-body">
       <form class="col s12">
+        <div class="col s1"></div>
         <div class="input-field col s4">
           <input id="location number" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
           type = "number"
@@ -91,7 +94,6 @@
         </div>
       </div>
     </div>
-
     <!-- events -->
     <div class="row">
       <div class="col m12">
@@ -150,7 +152,7 @@
           <table>
             <thead>
               <tr>
-                  <th><i class="material-icons">favorite</i></th>
+                  <th></th>
                   <th>Event Title</th>
                   <th>Event Description</th>
                   <th>Date/Time</th>
@@ -158,7 +160,8 @@
                   <th>Time</th> -->
               </tr>
             </thead>
-            <tbody id="favorite-list"></tbody>
+            <tbody id="favorite-list">
+            </tbody>
           </table>
         </div>
         <div class="modal-footer">

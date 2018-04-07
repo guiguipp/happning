@@ -43,24 +43,34 @@ $(document).ready(function() {
 
     $(document).on("click", "#favorite-event", function() {
 
-        console.log("click");
+        var favIcon = $(this).parent()
+        var favRow = $(this).parent().siblings();
 
         $(this).text("favorite");
 
-        $("#favorite-list").empty()
+        // $("#favorite-list").empty()
 
-        // $("#event-list tr").each(function() {
-        //     var tr = $(this).text()
-        //     var tdArray = [];
-        //     $(this).find('td').each(function () {
-        //         var td = $(this).text();
-        //         tdArray.push();
+        // var favTable = new Array();
+
+        // $("#event-list tr").each(function(row, tr) {
+        //     favTable[row]={
+        //         "eventTitle" : $(tr).find("td:eq(0)").text(),
+        //         "eventDiscription" : $(tr).find("td:eq(1)").text(),
+        //         "eventDateTime" : $(tr).find("td:eq(2)").text()
+        //     }
         //     });
 
-        //     trArray.push(tdArray)
+        // // console.log(favTable)
+        //     favTable.shift();
         // })
 
-        $(".favorite-row").clone().appendTo("#favorite-list")
+        console.log(favRow)
+        var row = $("<tr>");
+        favIcon.clone().appendTo(row)
+        favRow.clone().appendTo(row)
+        row.appendTo("#favorite-list");
+        // $("#favorite-list").html("<tr>")
+    });
     //     // var val = $("#favorite-item").val();
     //     // $("input[type='text']").val("");
 
@@ -68,7 +78,6 @@ $(document).ready(function() {
     //     // localStorage.setItem(favoritelist, JSON.stringify(list));
 
     //     // putInModal();
-    });
 });
 
 //will delete lin
