@@ -30,9 +30,9 @@
 
       <!-- Current Location Weather -->
       <div class="col s4 m4">
-        <div class="card blue-grey darken-1 weather-card">
-          <div class="card-content white-text">
-            <span class="card-title weather-title">Weather</span>
+        <div class="panel blue-grey darken-1 weather-card">
+          <div class="panel-content white-text">
+            <span class="panel-title weather-title">Weather</span>
             <br>
             <p class="center-align" id="location-weather"></p>
           </div>
@@ -51,11 +51,13 @@
     <div class="row input-body">
       <form class="col s12">
         <div class="input-field col s4">
-          <input id="location" type="text" class="validate">
-          <label class="active" for="location">Where? (zip code or city)</label>
+          <input id="location number" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+          type = "number"
+          maxlength = "5" class="validate">
+          <label class="active" for="location">Where? (zip code)</label>
         </div>
         <div class="input-field col s4">
-            <input id="date" type="text" class="datepicker">
+            <input id="date" type="date" class="date validate">
             <label class="active"  for="date">When?</label>
         </div>
             
@@ -69,9 +71,9 @@
     <!-- weather -->
     <div class="row">
       <div class="col s12 m12">
-        <div class="card blue-grey darken-1 weather-card">
-          <div class="card-content white-text">
-            <span class="card-title weather-title">Weather Forecast</span>
+        <div class="panel-table panel-default panel-body blue-grey darken-1 weather-card">
+          <div class="panel-heading">
+            <span class="panel-title weather-title">Weather Forecast</span>
           <!-- <p class="weather-output"></p> -->
           </div>
           <table class="table table-striped responsive-table" id="weather-table">

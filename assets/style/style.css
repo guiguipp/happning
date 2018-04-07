@@ -28,16 +28,28 @@
 }
 label {
     color: black !important;
-    font-size: 20px !important;
+    font-size: 40px !important;
 }
 .input-field {
+    color: black;
+    margin-left: 45px !important;
+}
+.validate {
+    margin-top: 45px !important;
     color: black;
 }
 
 h3 {
-    margin: 80px;
+    margin-left: 100px;
+    margin-right: 100px;
     font-family: 'Barlow Semi Condensed', sans-serif;
     border-bottom: 1px solid black;
+}
+h4 {
+    margin-left: 100px;
+    margin-right: 105px !important;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 40px;
 }
 
 input {
@@ -110,14 +122,45 @@ footer {
 }
 .weather-title {
     font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 40px;
+    padding-left: 50px;
+    color: white;
 }
 
 .weather-card {
     opacity: 0.6;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 100px;
+    margin-right: 100px;
     padding-top: 10px;
+    padding-bottom: 15px;
 }
 .location {
     font-size: 15px !important;
+
 }
+#weather-table {
+margin-right: 90px;
+margin-left: 0px;
+width: 80%;
+color: white;
+}
+#event-list {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin-left: 50px !important;
+    width: 90%;
+}
+
+thead {
+    font-weight: bold !important;
+    font-size: 20px !important;
+}
+
+.card {
+    padding-top: 10px !important;
+}
+/* #location {
+    margin-left: 10px;
+}
+#date {
+    margin-left: 10px;
+} */
