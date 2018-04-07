@@ -6,54 +6,105 @@ $(document).ready(function() {
 // 		console.log("click")
 // 		$(this).text("favorite")
 
-// 		$("#favorite-list").append("<tr><td><i class='material-icons'>favorite</td><td></td><td></td><td></td><td></td></tr>");
+// 		$(".favorite-row").clone().appendTo("#favorite-list")
 // 	})
 // })
 
-var favoritelist;
-var list;
+    // var favoritelist;
+    // var list;
 
-if (!Array.isArray(list)){
-    list = [];
-}
+    // if (!Array.isArray(list)){
+    //     list = [];
+    // }
 
-function putInModal() {
-    $("#favorite-list").empty();
-    var insideList = JSON.parse(localStorage.getItem("favoritelist"));
-    if (!Array.isArray(insideList)){
-        insideList = [];
-    }
-    for (var i = 0; i < insideList.length; i++) {
-        var tr = $("<tr>").text(insideList[i]);
-        var b = $("<button class ='delete'>").text("x").attr("data-index", i);
-        $("#favorite-list").append("<tr><td><i class='material-icons'>favorite</td><td></td><td></td><td></td><td></td></tr>");
-    }
-}
+    // function putInModal() {
+    //     $("#favorite-list").empty();
+    //     var insideList = JSON.parse(localStorage.getItem(favoritelist));
+    //     if (!Array.isArray(insideList)){
+    //         insideList = [];
+    //     }
+    //     for (var i = 0; i < insideList.length; i++) {
+    //         var tr = $("<tr>").text(insideList[i]);
+    //         var b = $("<button class ='delete'>").text("x").attr("data-index", i);
+    //         $("#favorite-list").append("<tr><td><i class='material-icons'>not_interested</td><td></td><td></td><td></td><td></td></tr>");
+    //     }
+    // }
 
-putInModal();
+    // putInModal();
 
-favoritelist.splice(currentIndex, 1);
-list = favoritelist;
+    // // favoritelist.splice(currentIndex, 1);
+    // list = favoritelist;
 
-localStorage.setItem("favoritelist", JSON.stringify(favoritelist));
+    // localStorage.setItem("favoritelist", JSON.stringify(favoritelist));
 
-putInModal();
+    // putInModal();
+
+    var trArray = [];
+
+    $(document).on("click", "#favorite-event", function() {
+
+        var favIcon = $(this).parent()
+        var favRow = $(this).parent().siblings();
+
+        var heartStatus = $(this).attr("heart");
 
 
+        if (heartStatus === "empty") {
 
-$(document).on("click", "#favorite-event", function() {
-    $(this).text("favorite");
-    event.preventDefault();
 
-    var val = $("input[type='text']").val();
-    $("input[type='text']").val("");
+            $(this).text("favorite"); 
 
-    list.push(val);
-    localStorage.setItem("favoritelist", JSON.stringify(list));
+            console.log(favRow)
 
-    putInModal();
+            $(this).attr("heart", "full")
+
+            var row = $("<tr>");
+            favIcon.clone().appendTo(row)
+            favRow.clone().appendTo(row)
+            row.appendTo("#favorite-list");
+
+        } else if (heartStatus === "full") {
+
+            $(this).attr("heart", "empty")
+
+            $(this).text("favorite_border")
+
+            favIcon.replaceWith("")
+            favRow.replaceWith("")
+        }
+        // $("#favorite-list").empty()
+
+
+        // var favTable = new Array();
+
+        // $("#event-list tr").each(function(row, tr) {
+        //     favTable[row]={
+        //         "eventTitle" : $(tr).find("td:eq(0)").text(),
+        //         "eventDiscription" : $(tr).find("td:eq(1)").text(),
+        //         "eventDateTime" : $(tr).find("td:eq(2)").text()
+        //     }
+        //     });
+
+        // // console.log(favTable)
+
+            
+        // })
+
+        
+
+        // $("#favorite-list").html("<tr>")
+    });
+    //     // var val = $("#favorite-item").val();
+    //     // $("input[type='text']").val("");
+
+    //     // list.push(val);
+    //     // localStorage.setItem(favoritelist, JSON.stringify(list));
+
+    //     // putInModal();
 });
-});
+
+//will delete lin
+//$("#favorite-list").append(this)
 
 // function to grab the current location automatically
 // $.ajax({
