@@ -64,9 +64,6 @@ console.log("Hello")
     };
 
     currentWeather();
-
-    //Modal
-    $('.modal').modal();
     
     //Forecast
     $("#search").on("click", function() {
@@ -120,6 +117,15 @@ console.log("Hello")
             var dateEntered = moment($("#date").val()).format(dateFormat);
             var days = moment(dateEntered).diff(moment(today), 'days');
         // ****************************************************************************
+        
+        // Weather Modal
+        //Days in Advance Cannot Exceed 15 
+        if (days >=16) {
+            //Modal
+            $('.modal').modal();
+            $(".dayModal").modal();
+            // alert("NO!")
+        }
 
         // Here we are building the URL we need to query the database
         var weatherURL =    "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
