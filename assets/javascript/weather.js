@@ -8,10 +8,6 @@ console.log("Hello")
         autoclose: true
     });
 
-    //Current Date with Moment.js
-    var currentDate = moment ();
-        console.log("Current Date: " + currentDate.format("L"));
-
     //Current Location Weather Function
     function currentWeather () {
         
@@ -41,21 +37,23 @@ console.log("Hello")
                 
                 // We store all of the retrieved data inside of an object called "response"
                 .then (function(response) {
-                    console.log(response);
-                    console.log(response.name);
-                    console.log(Math.floor(response.main.temp) + "° F");
-                    console.log(response.weather[0].description);
-                    console.log(response.weather[0].icon);
+                    // console.log(response);
+                    // console.log(response.name);
+                    // console.log(Math.floor(response.main.temp) + "° F");
+                    // console.log(response.weather[0].description);
+                    // console.log(response.weather[0].icon);
 
                     var userWeatherCity = response.name;
                     var userWeatherTemp = (Math.floor(response.main.temp) + "° F");
                     var userWeatherDescription = response.weather[0].description;
                     var userWeatherDiv = $("<div>");
+                    var image = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
 
                     $("#location-weather").append(userWeatherDiv);
-                    userWeatherDiv.append(userWeatherCity);
-                    userWeatherDiv.append(userWeatherTemp);
-                    userWeatherDiv.append(userWeatherDescription);
+                    userWeatherDiv.append("<div>" + userWeatherCity + "</div>");
+                    userWeatherDiv.append("<div>" + userWeatherTemp + "</div>");
+                    userWeatherDiv.append("<div>" + userWeatherDescription + "</div>");
+                    $("#currentWeatherImage").append("<img src=" + image + ">" + "</img>")
 
         
                 });
@@ -66,29 +64,72 @@ console.log("Hello")
     };
 
     currentWeather();
-
-    //Modal
-    $('.modal').modal();
     
     //Forecast
     $("#search").on("click", function() {
     
         event.preventDefault();
+
+        //Current Date with Moment.js
+        var currentDate = moment ();
+        console.log("Current Date: " + currentDate.format("L"));
     
         // This is our API key
         var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
-    
+
+        var dateFormat = "mm/dd/yyyy";
+
+        //Date Picked
+        var pickedDate = $('.datepicker').val();
+        console.log("Date Picked: " + pickedDate); 
+        
+        console.log(currentDate.diff(pickedDate, "days"));
+        
         //City Input
         var userCity = $("#location").val().trim(); //Will Be Used In Final Version
-        var userCity = "Minneapolis";
+        
     
         //Days of Weather Needed
-        var days = ""; //Will Be Used In Final Version
-        var days = 6
-            
+        // **********************************************************************
+        $("#date").datepicker();
+            var dateFormat = "YYYYMMDD",
+
+                date = $("#date").datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 3
+                })
+                    .on("change", function () {
+                        from.datepicker("option", "maxDate", getDate(this));
+                    });
+
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    date = null;
+                }
+                return date;
+            }
+
+            var today = moment().format(dateFormat);
+            var dateEntered = moment($("#date").val()).format(dateFormat);
+            var days = moment(dateEntered).diff(moment(today), 'days');
+        // ****************************************************************************
+        
+        // Weather Modal
+        //Days in Advance Cannot Exceed 15 
+        if (days >=16) {
+            //Modal
+            $('.modal').modal();
+            $(".dayModal").modal();
+            // alert("NO!")
+        }
+
         // Here we are building the URL we need to query the database
         var weatherURL =    "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
-                            userCity + "&units=imperial&appid=" + weatherAPIKey + "&cnt=" + days;
+                            userCity + "&units=imperial&appid=" + weatherAPIKey + "&cnt=" + (days + 1);
     
         // Here we run our AJAX call to the OpenWeatherMap API 
         $.ajax ({
@@ -126,9 +167,7 @@ console.log("Hello")
                 $("#weather-table > tbody").append("<tr><td>" + "<img src=" + image + ">" + "</img>"  + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
             }
 
-            //Date Picked
-            var pickedDate = $('.datepicker').val();
-                console.log("Date Picked: " + pickedDate);               
+                         
         });
 
     });

@@ -45,9 +45,12 @@ $(document).ready(function() {
 
         var favIcon = $(this).parent()
         var favRow = $(this).parent().siblings();
+
         var heartStatus = $(this).attr("heart");
 
+
         if (heartStatus === "empty") {
+
 
             $(this).text("favorite"); 
 
@@ -71,6 +74,7 @@ $(document).ready(function() {
         }
         // $("#favorite-list").empty()
 
+
         // var favTable = new Array();
 
         // $("#event-list tr").each(function(row, tr) {
@@ -82,10 +86,12 @@ $(document).ready(function() {
         //     });
 
         // // console.log(favTable)
+
             
         // })
 
         
+
         // $("#favorite-list").html("<tr>")
     });
     //     // var val = $("#favorite-item").val();
