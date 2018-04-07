@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Chivo|Marvel|Monoton|Reem+Kufi" rel="stylesheet">
@@ -17,130 +16,131 @@
 
 <body>
   <div class="index-container">
+
+    <!-- Title -->
     <div class="row main">
       <div class="col s4 m4">
-        <!-- <div class="card blue-grey"> -->
         <div class="card-content white-text">
           <span class="card-title">Happning</span>
         </div>
       </div>
-      <!-- <div class="row"> -->
-      <div class="col s4 m4">
 
-      </div>
+      <!-- Buffer Column -->
+      <div class="col s4 m4"></div>
+
+      <!-- Current Location Weather -->
       <div class="col s4 m4">
-        <div class="card horizontal">
-          <div class="card-image">
-            <!-- <img src="style/city_scape.jpg"> -->
-            <div class="card-title weather-card">weather</div>
-            <div class="card-content"></div>
-              <div id="location-weather"></div>
-          </div>
-          
+        <div class="card blue-grey darken-1 weather-card">
+          <div class="card-content white-text">
+            <span class="card-title weather-title">Weather</span>
+            <br>
+            <p class="center-align" id="location-weather"></p>
           </div>
         </div>
       </div>
     </div>
+  
+    <!--  -->
+    <div class="row main">
+      <div class="col s12">
+      <h3>Let's Make Some Plans!</h3>
+      </div>
+    </div>
 
-    <div>
-      <h3>Hi! We want to help you make a make a plan for your free time. Tell us where you are and when you need a plan!</h3>
-
-        <div class="card-action">
-            <div class="row input-body">
-              <form class="col s12">
-                  <div class="input-field col s4">
-                    <input id="location" type="text" class="validate">
-                    <label class="active" for="location">Where? (zip code or city)</label>
-                  </div>
-                  <div class="input-field col s4">
-                    <input id="date" type="text" class="datepicker">
-                    <label class="active"  for="date">When?</label>
-                  </div>
-                  <!-- <div class="input-field col s4">
-                    <input id="to" type="text" class="datepicker">
-                    <label class="active"  for="date">When do you need some plans?</label>
-                  </div> -->
-                  <div class="col s1"></div>
-                  <button class="submit btn waves-effect waves-light" name="action" id="search">Submit
-                  </button>
-
-              </form>
-          </div>
-          <div class="input-field col s4">
-<!-- weather -->
-  <div class="row">
-    <div class="col s12 m12">
-      <div class="card blue-grey darken-1 weather-card">
-        <div class="card-content white-text">
-          <span class="card-title weather-title">Weather Forecast</span>
-          <!-- <p class="weather-output"></p> -->
+    <div class="card-action">
+    <div class="row input-body">
+      <form class="col s12">
+        <div class="input-field col s4">
+          <input id="location" type="text" class="validate">
+          <label class="active" for="location">Where? (zip code or city)</label>
         </div>
-        <table class="table table-striped responsive-table" id="weather-table">
+        <div class="input-field col s4">
+            <input id="date" type="text" class="datepicker">
+            <label class="active"  for="date">When?</label>
+        </div>
+            
+        <div class="col s1"></div>
+          <button class="submit btn waves-effect waves-light" name="action" id="search">Submit</button>
+      </form>
+    </div>
+    </div>
+
+          <!-- <div class="input-field col s4"> -->
+    <!-- weather -->
+    <div class="row">
+      <div class="col s12 m12">
+        <div class="card blue-grey darken-1 weather-card">
+          <div class="card-content white-text">
+            <span class="card-title weather-title">Weather Forecast</span>
+          <!-- <p class="weather-output"></p> -->
+          </div>
+          <table class="table table-striped responsive-table" id="weather-table">
             <thead>
                 <tr>
-                    <th></th>
-                    <th>Date</th>
-                    <th>City</th>
-                    <th>Sky</th>
-                    <th>Temperature</th>
+                  <th></th>
+                  <th>Date</th>
+                  <th>City</th>
+                  <th>Sky</th>
+                  <th>Temperature</th>
                 </tr>
             </thead>
             <tbody></tbody>
-        </table>
-      </div>
-    </div>
-          <!-- events -->
-        <div class="row">
-          <div class="col m12">
-              <div class="panel-table panel-default panel-body">
-                  <div class="panel-heading">
-                      <h4 class="panel-title">Current Events</h4>
-                  </div>
-                <div>
-                  <div>
-                      <table id="event-list" class="table table-striped responsive-table highlight">
-                          <thead>
-                              <tr>
-                                  <th></th>
-                                  <th>Event Title</th>
-                                  <th>Description</th>
-                                  <th>Date/Time</th>
-                                  <!-- <th>Time</th>
-                                  <th>Type</th> -->
-                              </tr>
-                          </thead>
-                          <tbody>
-                            <tr class="favorite-row">
-                              <td>
-                                <i class="material-icons" id="favorite-event">favorite_border</i></td>
-                              <td id="event-title">Pub Crawl</td>
-                              <td id="event-description">Go to as many bars as we can</td>
-                              <td id="event-date/time">4/20 10pm</td>
-                              <!-- <td id="event-type"></td> -->
-                            </tr>
-                            <tr class="favorite-row">
-                              <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
-                              <td id="event-title">Twins Game</td>
-                              <td id="event-description">Vs the Yankees</td>
-                              <td id="event-date/time">3/30 3:30pm</td>
-                              <!-- <td id="event-type"></td> -->
-                            </tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
+          </table>
         </div>
       </div>
     </div>
+    <!-- events -->
+    <div class="row">
+      <div class="col m12">
+          <div class="panel-table panel-default panel-body">
+            <div class="panel-heading">
+              <h4 class="panel-title">Current Events</h4>
+            </div>
+              <!-- <div> -->
+                <!-- <div> -->
+            <table id="event-list" class="table table-striped responsive-table highlight">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Event Title</th>
+                  <th>Description</th>
+                  <th>Date/Time</th>
+                  <!-- <th>Time</th>
+                  <th>Type</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="favorite-row">
+                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                  <td id="event-title">Pub Crawl</td>
+                  <td id="event-description">Go to as many bars as we can</td>
+                  <td id="event-date/time">4/20 10pm</td>
+                  <!-- <td id="event-type"></td> -->
+                </tr>
+                <tr class="favorite-row">
+                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                  <td id="event-title">Twins Game</td>
+                  <td id="event-description">Vs the Yankees</td>
+                  <td id="event-date/time">3/30 3:30pm</td>
+                  <!-- <td id="event-type"></td> -->
+                </tr>
+              </tbody>
+            </table>
+                <!-- </div> -->
+            <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  
+
     <div class="row">
       <!-- Modal Trigger -->
       <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
-              <i class="material-icons">favorite_border</i>
-            </a>
+        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
+          <i class="material-icons">favorite_border</i>
+        </a>
     
-            <!-- Modal Structure -->
+      <!-- Modal Structure -->
       <div id="modal1" class="modal">
         <div class="modal-content">
           <h4>Favorite Activities</h4>
@@ -151,7 +151,6 @@
                   <th>Event Title</th>
                   <th>Event Description</th>
                   <th>Date/Time</th>
-                  
                   <!-- <th>Date</th>
                   <th>Time</th> -->
               </tr>
@@ -159,12 +158,14 @@
             <tbody id="favorite-list">
             </tbody>
           </table>
-          </div>
-          <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
         </div>
       </div>
+
+      <!-- Footer -->
       <footer class="page-footer">
         <div class="container">
           <div class="row">
@@ -174,7 +175,6 @@
             </div>
             <div class="col offset-l2 ">
               <h5 class="white-text">Created By</h5>
-
               <ul>
                 <li>
                   <a class="grey-text text-lighten-3" href="https://github.com/ally0426" target="_blank">Youngmi Lee</a>
@@ -192,11 +192,13 @@
                   <a class="grey-text text-lighten-3" href="https://github.com/kvarble" target="_blank">Kathy Varble</a>
                 </li>
               </ul>
-
             </div>
           </div>
         </div>
       </footer>
+    </div>
+
+  </div> <!-- End Container Div -->
 
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
       <script type="text/javascript" src="./assets/javascript/events.js"></script>
