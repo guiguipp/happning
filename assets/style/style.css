@@ -7,9 +7,6 @@
     margin-top: 50px;
 }
 
-.weather-card {
-    font-family: 'Barlow Semi Condensed', sans-serif;
-}
 /* .input-body, .panel-body {
     background-color: white;
 } */
@@ -120,7 +117,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
-.weather-title {
+.weather-title, .event-title {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 40px;
     padding-left: 50px;
@@ -128,6 +125,7 @@ footer {
 }
 
 .weather-card {
+    font-family: 'Barlow Semi Condensed', sans-serif;
     opacity: 0.6;
     margin-left: 100px;
     margin-right: 100px;
@@ -138,16 +136,19 @@ footer {
     font-size: 15px !important;
 
 }
+
 #weather-table {
-margin-right: 90px;
-margin-left: 0px;
-width: 80%;
-color: white;
+    margin-right: 90px;
+    margin-left: 0px;
+    width: 80%;
+    color: white;
 }
+
 #event-list {
     font-family: 'Barlow Semi Condensed', sans-serif;
     margin-left: 50px !important;
     width: 90%;
+    color: white;
 }
 
 thead {

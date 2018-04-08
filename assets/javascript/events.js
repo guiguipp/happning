@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
     $('.datepicker').datepicker();
-  });
+  
 
 
 // var timeStamp = Math.floor(Date.now() / 1000)
@@ -114,4 +114,5 @@ $.ajax({
             $("#events").append(eventInfo);
         }
     });
+});
 });
