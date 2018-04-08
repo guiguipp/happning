@@ -113,38 +113,42 @@ $(document).ready(function () {
                     for (let i = 0; i < results.length; i++) {
                         var unixDate = results[i].dt;
 
-                    function weatherDay(city, dateNew, tempHigh, tempLow, sky, image) {
-                        this.city = city;
-                        this.dateNew = dateNew;
-                        this.tempHigh = tempHigh;
-                        this.tempLow = tempLow;
-                        this.sky = sky;
-                        this.image = image;
-                        weatherArray.push(this);
-                    }
+                        // object constructor for weather data from the API
+                        // objects are pushed in an array
+                        function weatherDay(city, dateNew, tempHigh, tempLow, sky, image) {
+                            this.city = city;
+                            this.dateNew = dateNew;
+                            this.tempHigh = tempHigh;
+                            this.tempLow = tempLow;
+                            this.sky = sky;
+                            this.image = image;
+                            weatherArray.push(this);
+                            }
+                        // objects populate with data from the API
+                        let wF = new weatherDay(
+                            response.city.name,
+                            moment.unix(unixDate).format('L'),
+                            Math.round(results[i].temp.max),
+                            Math.round(results[i].temp.min),
+                            results[i].weather[0].description,
+                            "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png'>")
+                        }
+                        // shortcut to get the last element of the array
+                        let last = weatherArray.length-1;
+                        let day = weatherArray[last];
                     
-                    let wF = new weatherDay(
-                        response.city.name,
-                        moment.unix(unixDate).format('L'),
-                        Math.round(results[i].temp.max),
-                        Math.round(results[i].temp.min),
-                        results[i].weather[0].description,
-                        "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png'>")
-                    }
+                        // elements to help display on html
+                        const tRow = "<tr class='weather_result'>";
+                        const tTag = "<td>";
+                        const tImg = "<img src='";
+                        const tTemp = "° F";
+                        const tHighTemp = "<td>High: ";
+                        const tLowTemp = "/Low: ";
                     
-                    let last = weatherArray.length-1;
-                    let day = weatherArray[last];
-                    
-                    const tRow = "<tr class='weather_result'>";
-                    const tTag = "<td>";
-                    const tImg = "<img src='";
-                    const tTemp = "° F";
-                    const tHighTemp = "<td>High: ";
-                    const tLowTemp = "/Low: ";
-                    
-                    let wRow = `${tRow} ${tTag} ${tImg} ${day.image} ${tTag} ${day.dateNew} ${tTag} ${day.city} ${tTag} ${day.sky} ${tHighTemp}${day.tempHigh} ${tTemp} ${tLowTemp}${day.tempLow}${tTemp}`;
-                    console.log(wRow);
-                    $("#weather-table>").append(wRow);
+                        // appended row
+                        let wRow = `${tRow} ${tTag} ${tImg} ${day.image} ${tTag} ${day.dateNew} ${tTag} ${day.city} ${tTag} ${day.sky} ${tHighTemp}${day.tempHigh} ${tTemp} ${tLowTemp}${day.tempLow}${tTemp}`;
+                        console.log(wRow);
+                        $("#weather-table>").empty("").append(wRow);
                 });
             }
         });
