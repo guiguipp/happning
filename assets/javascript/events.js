@@ -3,16 +3,15 @@ const eventsArray = [];
 const favIcon = "favorite";
 const unFavIcon = "favorite_border";
 
-
 let timeStamp = Math.floor(Date.now() / 1000)
 console.log("timeStamp: " , timeStamp)
 
-// THis is the time format the event API is requesting  
+// This is the time format the event API is requesting  
 const dateFormat = "YYYYMMDD"; 
 
 $(document).ready(function(){
     $('.datepicker').datepicker();
-  
+})
 
 // Functions triggered on event search
 
@@ -99,37 +98,14 @@ $.ajax({
                     eDate = "Time not specified :( "; 
                     }; 
                 
-
-/* A false value (0) indicates that the start_time and stop_time are as listed. 
-If the all_day flag is set to 1 (all day) or 2 (no time specified), 
-then the time should be omitted from start_time and stop_time.*/
-
-
-
-
-
-
-                
                 // Creating the row with the attributes of the object + the HTML tags
                 // add ${newEvent.location} for location
                 var eRow = `${eInfo} ${newEvent.id} ${newEvent.icon} ${eTitle} ${newEvent.title} ${eDescription} ${newEvent.description} ${tdDate} ${eDate}`;
                 console.log(eRow);
 
-
-
-            // Youngmi's code breaking:   
-            // const description = event[i].description ? event[i].description : "Not Available";
-            // const start_time = event[i].start_time ? event[i].start_time: "No time info";
-            // const venue_name = event[i].venue_name ? event[i].venue_name: "No place info";
-
-            
-            // const eventInfo = $("<tr>").addClass("event-list material-icons").attr({id:"favorite-event", heart:"empty"}).html("<td><strong>" + event[i].title + "</strong></td><td>" + description + 
-            // "</td><td> " + start_time + "<br>" + venue_name + "</td>");
-
-
             $("#events").append(eRow);
         }
-    });
+    });   
 });
 $(document).on("click", ".material-icons", function (){
     getId = ($(this).attr("heart"))
