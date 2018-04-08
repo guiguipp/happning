@@ -9,12 +9,7 @@ console.log("timeStamp: " , timeStamp)
 // This is the time format the event API is requesting  
 const dateFormat = "YYYYMMDD"; 
 
-$(document).ready(function(){
-    $('.datepicker').datepicker();
-})
-
 // Functions triggered on event search
-
 $("#search").on("click", function (event) {
     event.preventDefault();
 

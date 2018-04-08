@@ -1,3 +1,7 @@
+// global variables
+const weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
+const weatherArray = [];
+
 $(document).ready(function () {
     console.log("Hello")
     //Datepicker
@@ -19,8 +23,7 @@ $(document).ready(function () {
             dataType: "jsonp",
             success: function (location) {
                 console.log("Current Location: " + location.city);
-                // This is our API key
-                var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
+                
                 //City Input
                 var userCity = location.city;
                 // Here we are building the URL we need to query the database
@@ -33,7 +36,6 @@ $(document).ready(function () {
                 })
                     // We store all of the retrieved data inside of an object called "response"
                     .then(function (response) {
-                       
                         var userWeatherCity = response.name;
                         var userWeatherTemp = (Math.floor(response.main.temp) + "° F");
                         var userWeatherDescription = response.weather[0].description;
@@ -54,33 +56,13 @@ $(document).ready(function () {
     //Forecast
     $("#search").on("click", function () {
         event.preventDefault();
-
-       
-        //City Input
-        var userCity = $("#location").val().trim(); //Will Be Used In Final Version
-        
-    
-        // This is our API key
-        var weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
         //City Input
         var userCity = $("#location").val().trim(); //Will Be Used In Final Version
         console.log("userCity: ", userCity);
-        // var userCity = "Minneapolis";
-
+       
         //Days of Weather Needed
-        // **********************************************************************
         $("#date").datepicker();
             var dateFormat = "YYYYMMDD",
-
-                // from = $("#from")
-                //     .datepicker({
-                //         defaultDate: "+1w",
-                //         changeMonth: true,
-                //         numberOfMonths: 3
-                //     })
-                //     .on("change", function () {
-                //         to.datepicker("option", "minDate", getDate(this));
-                //     }),
 
                 date = $("#date").datepicker({
                     defaultDate: "+1w",
@@ -116,28 +98,45 @@ $(document).ready(function () {
                 // We store all of the retrieved data inside of an object called "response"
                 .then(function (response) {
                     // Log the queryURL
-                    console.log("weatherURL: " + weatherURL);
+                    console.log("Forecast weatherURL: " + weatherURL);
                     // Log the resulting object
-                    console.log(response);
                     console.log("================================");
-                    var results = response.list;
-                    for (var i = 0; i < results.length; i++) {
-                        var city = response.city.name
-                        var date = results[i].dt;
-                        var dateNew = moment.unix(date).format('L');
-                        var tempHigh = Math.round(results[i].temp.max);
-                        var tempLow = Math.round(results[i].temp.min);
-                        var sky = results[i].weather[0].description;
-                        var image = "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png"
-                        
-                        //Append Weather Info To Table
-                        $("#weather-table > tbody").append("<tr><td>" + "<img src=" + image + ">" + "</img>" + "</td><td>" + dateNew + 
-                        "</td><td>" + city + "</td><td>" + sky + "</td><td>High: " + tempHigh + "° F/ Low: " + tempLow + " ° F</td></tr>")
-                    }
-                    //Date Picked
-                    // var pickedDate = $('.datepicker').val();
-                    // console.log("Date Picked: " + pickedDate);
-                });
+                    let results = response.list;
+                    for (let i = 0; i < results.length; i++) {
+                        var unixDate = results[i].dt;
 
+                    function weatherDay(city, dateNew, tempHigh, tempLow, sky, image) {
+                        this.city = city;
+                        this.dateNew = dateNew;
+                        this.tempHigh = tempHigh;
+                        this.tempLow = tempLow;
+                        this.sky = sky;
+                        this.image = image;
+                        weatherArray.push(this);
+                    }
+                    
+                    let wF = new weatherDay(
+                        response.city.name,
+                        moment.unix(unixDate).format('L'),
+                        Math.round(results[i].temp.max),
+                        Math.round(results[i].temp.min),
+                        results[i].weather[0].description,
+                        "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png'>")
+                    }
+                    
+                    let last = weatherArray.length-1;
+                    let day = weatherArray[last];
+                    
+                    const tRow = "<tr class='weather_result'>";
+                    const tTag = "<td>";
+                    const tImg = "<img src='";
+                    const tTemp = "° F";
+                    const tHighTemp = "<td>High: ";
+                    const tLowTemp = "/Low: ";
+                    
+                    let wRow = `${tRow} ${tTag} ${tImg} ${day.image} ${tTag} ${day.dateNew} ${tTag} ${day.city} ${tTag} ${day.sky} ${tHighTemp}${day.tempHigh} ${tTemp} ${tLowTemp}${day.tempLow}${tTemp}`;
+                    console.log(wRow);
+                    $("#weather-table>").append(wRow);
+                });
         });
     })
