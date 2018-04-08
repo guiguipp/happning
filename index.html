@@ -88,7 +88,7 @@
             <span class="panel-title weather-title">Weather Forecast</span>
           <!-- <p class="weather-output"></p> -->
           </div>
-          <table class="table table-striped responsive-table" id="weather-table">
+          <table class="table table-striped responsive-table">
             <thead>
                 <tr>
                   <th class= "not-empty"> <!-- icon --> </th>
@@ -98,7 +98,8 @@
                   <th>Temperature</th>
                 </tr>
             </thead>
-            <!-- <tbody> </tbody> -->
+            <tbody id="weather-table"> 
+            </tbody>
           </table>
         </div>
       </div>
@@ -116,7 +117,7 @@
                   <th></th>
                   <th>Event Title</th>
                   <th>Description</th>
-                  <th>Date/Time</th>
+                  <th>Time</th>
                 </tr>
               </thead>
               <tbody id="events">

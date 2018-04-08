@@ -141,14 +141,13 @@ $(document).ready(function () {
                         const tRow = "<tr class='weather_result'>";
                         const tTag = "<td>";
                         const tImg = "<img src='";
-                        const tTemp = "° F";
+                        const tTemp = " °F";
                         const tHighTemp = "<td>High: ";
-                        const tLowTemp = "/Low: ";
+                        const tLowTemp = " / Low: ";
                     
                         // appended row
-                        let wRow = `${tRow} ${tTag} ${tImg} ${day.image} ${tTag} ${day.dateNew} ${tTag} ${day.city} ${tTag} ${day.sky} ${tHighTemp}${day.tempHigh} ${tTemp} ${tLowTemp}${day.tempLow}${tTemp}`;
-                        console.log(wRow);
-                        $("#weather-table>").empty("").append(wRow);
+                        let wRow = `${tRow}${tTag}${tImg}${day.image}${tTag}${day.dateNew}${tTag}${day.city} ${tTag}${day.sky}${tHighTemp}${day.tempHigh}${tTemp}${tLowTemp}${day.tempLow}${tTemp}`;
+                        $("#weather-table").empty("").append(wRow);
                 });
             }
         });
