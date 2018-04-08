@@ -46,7 +46,7 @@ $(document).ready(function() {
         var favIcon = $(this).parent();
         var favRow = $(this).parent().siblings();
 
-        $(this).text("favorite");
+        // $(this).text("favorite");
 
         // $("#favorite-list").empty()
 
