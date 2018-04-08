@@ -11,7 +11,7 @@ const dateFormat = "YYYYMMDD";
 
 $(document).ready(function(){
     $('.datepicker').datepicker();
-  });
+  
 
 // Functions triggered on event search
 
@@ -99,8 +99,8 @@ $.ajax({
         }
     });
 });
-
 $(document).on("click", ".material-icons", function (){
     getId = ($(this).attr("heart"))
     console.log(getId);
 });
+
