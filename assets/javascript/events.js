@@ -108,7 +108,7 @@ $.ajax({
             const venue_name = event[i].venue_name ? event[i].venue_name: "No place info";
 
             
-            const eventInfo = $("<tr>").addClass("event-list material-icons").attr({id:"favorite-event", heart:"empty"}).html("<td><strong>" + event[i].title + "</strong></td><td>" + description + 
+            const eventInfo = $("<tr>").addClass("event-list").html("<td><i heart='empty' class='material-icons' id='favorite-event'>favorite_border</i></td><td><strong>" + event[i].title + "</strong></td><td>" + description + 
             "</td><td> " + start_time + "<br>" + venue_name + "</td>");
     
             $("#events").append(eventInfo);
