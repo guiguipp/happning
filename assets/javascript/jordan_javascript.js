@@ -41,12 +41,12 @@ $(document).ready(function() {
 
     var trArray = [];
 
-    $(document).on("click", "#favorite-event", function() {
+    $(document).on("click", ".event-list", function() {
 
         var favIcon = $(this).parent()
         var favRow = $(this).parent().siblings();
 
-        $(this).text("favorite");
+        // $(this).text("favorite");
 
         // $("#favorite-list").empty()
 
