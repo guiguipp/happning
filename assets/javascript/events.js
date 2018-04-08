@@ -66,7 +66,7 @@ $.ajax({
             // and this is how objects can be dynamically created with properties of the constructor and elements of the API + the "for loop"
             var newEvent = new EventDisplayed(
                 "id='" + e.id + "'>",
-                "<td class='icon'> <i heart='empty' class='material-icons' id='favorite-event'>" + unFavIcon + "</i>",
+                "<td class='icon'> <i heart='empty' class='material-icons' id='favorite-event' value='save'>" + unFavIcon + "</i>",
                 "favorite",
                 "empty",
                 e.title,
