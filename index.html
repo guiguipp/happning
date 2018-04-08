@@ -54,14 +54,12 @@
       <form class="col s12">
         <div class="col s1"></div>
         <div class="input-field col s4">
-          <input id="location number" type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-          type = "number"
-          maxlength = "5" class="validate">
-          <label class="active" for="location">Where? (zip code)</label>
+          <input id="location" types="cities" class="validate">
+          <label class="active" for="location">Where? (city)</label>
         </div>
         <div class="input-field col s4">
-            <input id="date" type="date" class="date validate">
-            <label class="active"  for="date">When?</label>
+            <input id="date" type="text" class="datepicker validate">
+            <label class="active"  for="date">When? (dd/mm/yyyy)</label>
         </div>
             
         <div class="col s1"></div>
