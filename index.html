@@ -52,7 +52,7 @@
       <form class="col s12">
         <div class="col s1"></div>
         <div class="input-field col s4">
-          <input id="location" type = "text" class="validate">
+          <input id="location" type="text" class="validate">
           <label class="active" for="location">Where? (city name)</label>
         </div>
         <div class="input-field col s4">
@@ -61,7 +61,8 @@
         </div>
             
         <div class="col s1"></div>
-          <button class="submit btn waves-effect waves-light modal-trigger" href="#modal2" name="action" id="search">Find</button>
+          <button class="submit btn waves-effect waves-light" name="action" id="search">Find</button>
+
       </form>
     </div>
     </div>
@@ -111,7 +112,20 @@
                 </tr>
               </thead>
               <tbody id="events">
-
+                <!-- <tr class="favorite-row">
+                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                  <td id="event-title">Pub Crawl</td>
+                  <td id="event-description">Go to as many bars as we can</td>
+                  <td id="event-date/time">4/20 10pm</td>
+                  <td id="event-type"></td>
+                </tr>
+                <tr class="favorite-row">
+                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
+                  <td id="event-title">Twins Game</td>
+                  <td id="event-description">Vs the Yankees</td>
+                  <td id="event-date/time">3/30 3:30pm</td>
+                   <td id="event-type"></td>
+                </tr> -->
               </tbody>
             </table>
                 <!-- </div> -->
@@ -140,8 +154,14 @@
                   <th>Date/Place</th> -->
                   <!-- <th>Date</th>
                   <th>Time</th> -->
+
+            <!-- <thead>
+              <tr>           
+                  <th>Event Title</th>
+                  <th>Event Description</th>
+                  <th>Date/Time</th>
               </tr>
-            </thead>
+            </thead> -->
             <tbody id="favorite-list">
             </tbody>
           </table>
