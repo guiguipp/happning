@@ -3,6 +3,7 @@ const eventsArray = [];
 const favIcon = "favorite";
 const unFavIcon = "favorite_border";
 
+
 let timeStamp = Math.floor(Date.now() / 1000)
 console.log("timeStamp: " , timeStamp)
 
@@ -49,17 +50,20 @@ $.ajax({
         for (var i = 0; i < event.length; i++) {
 
             var e = event[i];
-            var description = e.description ? e.description : "No Description yet. Come check later!";
+            var description = e.description ? e.description : "No Description yet. Come check later! \n";
 
             // This is an object constructor to create each event retrieved from the API as an object
-            function EventDisplayed(id, icon, favIcon, heartStatus, title, description, start) {
+            function EventDisplayed(id, icon, favIcon, heartStatus, title, description, location, start, end, duration) {
                 this.id = id;
                 this.icon = icon;
                 this.favIcon = favIcon;
                 this.heartStatus = heartStatus;
                 this.title = title;
                 this.description = description;
+                this.location = location
                 this.start = start;
+                this.end = end;
+                this.duration = duration;
                 eventsArray.push(this);
             }
 
@@ -71,19 +75,47 @@ $.ajax({
                 "empty",
                 e.title,
                 description,
+                e.venue_address + " in " + e.city_name,
                 moment(e.start_time).format("M/DD H:mm A"),
+                moment(e.stop_time).format("M/DD H:mm A"),
+                e.all_day
             )
             // those are variable to add html tags dynamically
                 var eInfo = "<tr class='event'"; 
                 var idTag = "<td id='obj-"; 
-                // var iconTag = "<td class='icon'> <i class='material-icons'>" + newEvent.icon
                 var eTitle = "<td class='event-title'>"
                 var eDescription = "<td class ='event-description'>"
-                var eDate = "<td class='date'>"
+                var tdDate = "<td class='date'>"
+                var eDate
+                if (e.all_day === "0") 
+                    {
+                        eDate = moment(e.start_time).format("M/DD H:mm A");
+                    } 
+                else if (e.all_day === "1")
+                    {
+                        eDate = "All day"; 
+                    } 
+                else {
+                    eDate = "Time not specified :( "; 
+                    }; 
                 
-                // and here I create the row with the attributes of the object + the HTML tags
-                var eRow = `${eInfo} ${newEvent.id} ${newEvent.icon} ${eTitle} ${newEvent.title} ${eDescription} ${newEvent.description} ${eDate} ${newEvent.start}`;
+
+/* A false value (0) indicates that the start_time and stop_time are as listed. 
+If the all_day flag is set to 1 (all day) or 2 (no time specified), 
+then the time should be omitted from start_time and stop_time.*/
+
+
+
+
+
+
+                
+                // Creating the row with the attributes of the object + the HTML tags
+                // add ${newEvent.location} for location
+                var eRow = `${eInfo} ${newEvent.id} ${newEvent.icon} ${eTitle} ${newEvent.title} ${eDescription} ${newEvent.description} ${tdDate} ${eDate}`;
                 console.log(eRow);
+
+
 
             // Youngmi's code breaking:   
             // const description = event[i].description ? event[i].description : "Not Available";
