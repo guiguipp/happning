@@ -63,9 +63,19 @@
         </div>
             
         <div class="col s1"></div>
-          <button class="submit btn waves-effect waves-light" name="action" id="search">Find</button>
-
+          <button class="submit btn waves-effect waves-light modal-trigger" name="action" id="search" data-target="#modal2">Find</button>
       </form>
+        <!-- Weather Modal -->
+        <!-- Modal Structure -->
+        <div id="modal2" class="modal">
+          <div class="modal-content">
+            <h4>Sorry!</h4>
+            <p>That date is too far in advance. Please select a date 15 or less days from now.</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+          </div>
+        </div>
     </div>
     </div>
 
@@ -151,18 +161,6 @@
         <div class="modal-footer">
           <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
-        </div>
-      </div>
-
-      <!-- Weather Modal -->
-      <!-- Modal Structure -->
-      <div id="modal2" class="dayModal">
-        <div class="modal-content">
-          <h4>Sorry!</h4>
-          <p>That date is too far in advance. Please select a date 15 or less days from now.</p>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
         </div>
       </div>
 

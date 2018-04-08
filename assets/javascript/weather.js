@@ -50,9 +50,6 @@ $(document).ready(function () {
     };
     currentWeather();
 
-    //Modal
-    $('.modal').modal();
-
     //Forecast
     $("#search").on("click", function () {
         event.preventDefault();
@@ -85,11 +82,22 @@ $(document).ready(function () {
             }
             
             var today = moment().format(dateFormat);
+
             var dateEntered = moment($("#date").val()).format(dateFormat);
-            var days = moment(dateEntered).diff(moment(today), 'days'); 
+
+            var days = moment(dateEntered).diff(moment(today), 'days');
             
             var weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
                 userCity + "&units=imperial&appid=" + weatherAPIKey + "&cnt=" + (days + 1);
+
+            
+            if (days >= 16) {
+                alert("no");
+                //Modal
+                $('#modal2').modal();
+
+            } else {    
+
             // Here we run our AJAX call to the OpenWeatherMap API 
             $.ajax({
                 url: weatherURL,
@@ -138,5 +146,6 @@ $(document).ready(function () {
                     console.log(wRow);
                     $("#weather-table>").append(wRow);
                 });
+            }
         });
     })
