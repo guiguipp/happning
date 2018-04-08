@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Chivo|Marvel|Monoton|Reem+Kufi" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="assets/style/style.css" />
-  <title>Trial One</title>
+  <title>Happning</title>
 </head>
 
 <body>
@@ -30,10 +30,9 @@
 
       <!-- Current Location Weather -->
       <div class="col s4 m4">
-
         <div class="panel blue-grey darken-1 weather-card">
           <div class="panel-content white-text">
-            <span class="panel-title weather-title">Current Weather</span>
+            <span class="panel-title weather-title">Current<br>Weather</span>
 
             <br>
             <p class="center-align" id="location-weather"></p>
@@ -42,7 +41,6 @@
       </div>
     </div>
   
-    <!--  -->
     <div class="row main">
       <div class="col s12">
       <h3>Let's Make Some Plans!</h3>
@@ -54,16 +52,19 @@
       <form class="col s12">
         <div class="col s1"></div>
         <div class="input-field col s4">
+
           <input id="location" types="cities" class="validate">
           <label class="active" for="location">Where? (city)</label>
         </div>
         <div class="input-field col s4">
             <input id="date" type="text" class="datepicker validate">
             <label class="active"  for="date">When? (dd/mm/yyyy)</label>
+
         </div>
             
         <div class="col s1"></div>
-          <button class="submit btn waves-effect waves-light" name="action" id="search">Submit</button>
+          <button class="submit btn waves-effect waves-light" name="action" id="search">Find</button>
+
       </form>
     </div>
     </div>
@@ -97,10 +98,8 @@
       <div class="col m12">
           <div class="panel-table panel-default panel-body">
             <div class="panel-heading">
-              <h4 class="panel-title">Current Events</h4>
+              <h4 class="panel-title">Events</h4>
             </div>
-              <!-- <div> -->
-                <!-- <div> -->
             <table id="event-list" class="table table-striped responsive-table highlight">
               <thead>
                 <tr>
@@ -108,29 +107,11 @@
                   <th>Event Title</th>
                   <th>Description</th>
                   <th>Date/Time</th>
-                  <!-- <th>Time</th>
-                  <th>Type</th> -->
                 </tr>
               </thead>
-              <tbody>
-                <tr class="favorite-row">
-                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
-                  <td id="event-title">Pub Crawl</td>
-                  <td id="event-description">Go to as many bars as we can</td>
-                  <td id="event-date/time">4/20 10pm</td>
-                  <!-- <td id="event-type"></td> -->
-                </tr>
-                <tr class="favorite-row">
-                  <td><i class="material-icons" id="favorite-event">favorite_border</i></td>
-                  <td id="event-title">Twins Game</td>
-                  <td id="event-description">Vs the Yankees</td>
-                  <td id="event-date/time">3/30 3:30pm</td>
-                  <!-- <td id="event-type"></td> -->
-                </tr>
+              <tbody id="events">
               </tbody>
             </table>
-                <!-- </div> -->
-            <!-- </div> -->
         </div>
       </div>
     </div>
@@ -146,18 +127,23 @@
       <!-- Modal Structure -->
       <div id="modal1" class="modal">
         <div class="modal-content">
-          <h4>Favorite Activities</h4>
+          <h4>Favorite Events</h4>
           <table>
             <thead>
               <tr>
-                  <th></th>
+                  <!-- <th>Event Title</th>
+                  <th>Event Description</th>
+                  <th>Date/Place</th> -->
+                  <!-- <th>Date</th>
+                  <th>Time</th> -->
+
+            <!-- <thead>
+              <tr>           
                   <th>Event Title</th>
                   <th>Event Description</th>
                   <th>Date/Time</th>
-                  <!-- <th>Date</th>
-                  <th>Time</th> -->
               </tr>
-            </thead>
+            </thead> -->
             <tbody id="favorite-list">
             </tbody>
           </table>
@@ -165,6 +151,18 @@
         <div class="modal-footer">
           <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
+        </div>
+      </div>
+
+      <!-- Weather Modal -->
+      <!-- Modal Structure -->
+      <div id="modal2" class="dayModal">
+        <div class="modal-content">
+          <h4>Sorry!</h4>
+          <p>That date is too far in advance. Please select a date 15 or less days from now.</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
         </div>
       </div>
 
@@ -205,7 +203,7 @@
 
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
       <script type="text/javascript" src="./assets/javascript/events.js"></script>
-      <script type="text/javascript" src="./assets/javascript/jordan_javascript.js"> </script>
+      <script type="text/javascript" src="./assets/javascript/frontend.js"> </script>
       <script type="text/javascript" src="./assets/javascript/weather.js"></script>
 </body>
 
