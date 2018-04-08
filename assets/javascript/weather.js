@@ -1,6 +1,10 @@
 // global variables
 const weatherAPIKey = "166a433c57516f51dfab1f7edaed8413";
 const weatherArray = [];
+let wRow;
+let wHead;
+
+$(".modal").modal();
 
 $(document).ready(function () {
     console.log("Hello")
@@ -50,6 +54,7 @@ $(document).ready(function () {
     };
     currentWeather();
 
+    
     //Forecast
     $("#search").on("click", function () {
         event.preventDefault();
@@ -82,32 +87,25 @@ $(document).ready(function () {
             }
             
             var today = moment().format(dateFormat);
-
             var dateEntered = moment($("#date").val()).format(dateFormat);
-
             var days = moment(dateEntered).diff(moment(today), 'days');
             
             var weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
                 userCity + "&units=imperial&appid=" + weatherAPIKey + "&cnt=" + (days + 1);
 
-            
             if (days >= 16) {
-                alert("no");
-                //Modal
-                $('#modal2').modal();
+                wHead = "No weather data available for the date selected at the moment. Please check again later!";
+                wRow = "";
+                weatherCont();
+            } 
+            else {                        
 
-            } else {    
-
-            // Here we run our AJAX call to the OpenWeatherMap API 
             $.ajax({
                 url: weatherURL,
                 method: "GET"
-            })
-                // We store all of the retrieved data inside of an object called "response"
-                .then(function (response) {
+            }).then(function (response) {
                     // Log the queryURL
                     console.log("Forecast weatherURL: " + weatherURL);
-                    // Log the resulting object
                     console.log("================================");
                     let results = response.list;
                     for (let i = 0; i < results.length; i++) {
@@ -146,10 +144,21 @@ $(document).ready(function () {
                         const tLowTemp = " / Low: ";
                     
                         // appended row
-                        let wRow = `${tRow}${tTag}${tImg}${day.image}${tTag}${day.dateNew}${tTag}${day.city}${tTag}${day.sky}${tHighTemp}${day.tempHigh}${tTemp}${tLowTemp}${day.tempLow}${tTemp}`;
-                        console.log(wRow);
-                        $("#weather-table").empty("").append(wRow);
+                        // if (days >= 16) {
+                        //     wRow = "No weather data available yet for the date selected. Please check later!"
+                        // } 
+                        // else {                            
+                        wHead = "";
+                        wRow = `${tRow}${tTag}${tImg}${day.image}${tTag}${day.dateNew}${tTag}${day.city}${tTag}${day.sky}${tHighTemp}${day.tempHigh}${tTemp}${tLowTemp}${day.tempLow}${tTemp}`;
+                        // }
+                        weatherCont()
+                        // console.log(wRow);
+                        // $("#weather-table").empty("").append(wRow);
                 });
             }
         });
     })
+    function weatherCont(){
+        $("#weather-header").empty("").append(wHead);
+        $("#weather-table").empty("").append(wRow);
+    }
