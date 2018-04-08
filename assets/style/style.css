@@ -1,15 +1,10 @@
 
-
 .card-title {
     font-family: 'Monoton', cursive;
     font-size: 40px !important;
     margin-left: 50px;
     margin-top: 50px;
 }
-
-/* .input-body, .panel-body {
-    background-color: white;
-} */
 
 .table {
     margin-bottom: 20px;
@@ -67,7 +62,6 @@ body {
     background: url(../sky_background.jpg);
     bottom: 0;
     left: 0;
-    /*display: flex;*/
     min-height: 100vh;
     flex-direction: column;
     background-attachment: fixed;
@@ -113,10 +107,16 @@ footer {
     opacity: 0.4;
     margin-top: -50px;
     clear: both;
-    /*position: fixed;*/
     bottom: 0;
     width: 100%;
 }
+
+.current-weather {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 40px;
+    padding-left: 15px;
+}
+
 .weather-title, .event-title {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 40px;
@@ -141,14 +141,14 @@ footer {
     margin-right: 90px;
     margin-left: 0px;
     width: 80%;
-    color: white;
+    color: black;
 }
 
 #event-list {
     font-family: 'Barlow Semi Condensed', sans-serif;
     margin-left: 50px !important;
     width: 90%;
-    color: white;
+    color: black;
 }
 
 thead {
@@ -159,9 +159,3 @@ thead {
 .card {
     padding-top: 10px !important;
 }
-/* #location {
-    margin-left: 10px;
-}
-#date {
-    margin-left: 10px;
-} */
