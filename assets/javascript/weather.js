@@ -152,7 +152,8 @@ console.log("Hello")
                 var city = response.city.name
                 var date = results[i].dt;
                 var dateNew = moment.unix(date).format('L');
-                var temp = Math.floor(results[i].temp.max);
+                var tempHigh = Math.round(results[i].temp.max);
+                var tempLow = Math.round(results[i].temp.min);
                 var sky = results[i].weather[0].description;
                 var image = "http://openweathermap.org/img/w/" + results[i].weather[0].icon + ".png"
 
@@ -164,7 +165,8 @@ console.log("Hello")
                 console.log("================================");
 
                 //Append Weather Info To Table
-                $("#weather-table > tbody").append("<tr><td>" + "<img src=" + image + ">" + "</img>"  + "</td><td>" + dateNew + "</td><td>" + city + "</td><td>" + sky + "</td><td>" + "High of " + temp + "° F" + "</td></tr>")
+                $("#weather-table > tbody").append("<tr><td>" + "<img src=" + image + ">" + "</img>"  + "</td><td>" + dateNew + "</td><td>" + city + 
+                "</td><td>" + sky + "</td><td>High: " + tempHigh + " ° F/ Low: " + tempLow + " ° F</td></tr>");
             }
 
                          
