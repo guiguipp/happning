@@ -120,7 +120,7 @@ footer {
 .weather-title, .event-title {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 40px;
-    padding-left: 50px;
+    /* padding-left: 50px; */
     color: white;
 }
 
@@ -149,6 +149,10 @@ footer {
     margin-left: 50px !important;
     width: 90%;
     color: black;
+}
+
+#events, #location-weather, .event-name {
+    color: black !important;
 }
 
 thead {
