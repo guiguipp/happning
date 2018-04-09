@@ -1,21 +1,8 @@
 $(".shazam").hide();
 
-var userCity;
-function getUserCity(){
-$.ajax({
-    url: "https://geoip-db.com/json",
-    method: "GET"
-    })
-    .then(function (response) {
-        var responseJSON = JSON.parse(response)
-        userCity = responseJSON.city;
-        return userCity;
-    });
-}
+
 
 $(document).ready(function() {
-    console.log("ready")
-
     //event handler on heart icon when events are generated
     $(document).on("click", "#favorite-event", function() {
 
@@ -52,3 +39,6 @@ $(document).ready(function() {
         }
     });
 });
+$(document).ajaxError(function(){
+    M.toast({html: 'Sorry, we were unable to find information for this request. Please double check your search criteria and try again!'})
+  });
