@@ -64,7 +64,7 @@ input {
 }
 
 body {
-    background: url(../sky_background.jpg);
+    background: url(../images/sky_background.jpg);
     bottom: 0;
     left: 0;
     min-height: 100vh;
@@ -171,3 +171,6 @@ thead {
     padding-top: 10px !important;
 }
 
+.openWeatherIMG {
+    width: 200px;
+}
