@@ -12,7 +12,8 @@ $.ajax({
 }
 
 $(document).ready(function() {
-	console.log("ready")
+    console.log("ready")
+    $(".shazam").hide();
 
     //event handler on heart icon when events are generated
     $(document).on("click", "#favorite-event", function() {
