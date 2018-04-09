@@ -110,4 +110,3 @@ $(document).on("click", ".material-icons", function (){
     getId = ($(this).attr("heart"))
     // console.log(getId);
 });
-

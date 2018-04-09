@@ -1,0 +1,154 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|Chivo|Marvel|Monoton|Reem+Kufi" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="assets/style/style.css" />
+  <title>Happning</title>
+</head>
+
+<body>
+  <div class="index-container">
+
+<!-- title -->
+        <div class="row main">
+                <div class="col s4 m4">
+                  <div class="card-content white-text">
+                    <span class="card-title">Happning</span>
+                  </div>
+                </div>
+                </div>
+                <!-- go back button -->
+                <div class="row">
+                <div class="col s1"></div>
+                <a href="indexp1.html"><button class="btn waves-effect waves-light" name="action" id="go-back">Try Again</button></a>
+            </div>
+        <!-- weather -->
+    <div class="row shazam">
+            <div class="col s12 m12">
+              <div class="panel-table panel-default panel-body blue-grey darken-1 weather-card">
+                <div class="panel-heading">
+                  <h4 class="panel-title weather-title">Weather Forecast<img src="assets/images/clouds.png"></h4>
+                </div>
+                <table class="table table-striped responsive-table">
+                  <thead class="error-message" id="weather-header">
+                      <tr>
+                        <th class= "not-empty"> <!-- icon --> </th>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>Sky</th>
+                        <th>Temperature</th>
+                      </tr>
+                  </thead>
+                  <tbody id="weather-table"> </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+      
+          <!-- events -->
+          <div class="row shazam">
+            <div class="col s12 m12">
+                <div class="panel-table panel-default panel-body blue-grey darken-1 weather-card">
+                  <div class="panel-heading">
+                    <h4 class="panel-title event-title">Events<img src="assets/images/clouds.png"></h4>
+                  </div>
+                  <table id="event-list" class="table table-striped responsive-table highlight">
+                    <thead class="error-message">
+                      <tr>
+                        <th></th>
+                        <th>Event Title</th>
+                        <th>Description</th>
+                        <th>Time</th>
+                      </tr>
+                    </thead>
+                    <tbody id="events">
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row">
+            <!-- Modal Trigger -->
+            <div class="fixed-action-btn">
+              <a id="fav-icon" class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
+                <i class="material-icons">favorite_border</i>
+              </a>
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h4>Favorite Events</h4>
+                <table>
+                  <!-- <thead> -->
+                  <!-- <tr> -->
+                  <tbody id="favorite-list">
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+              </div>
+              </div>
+            </div>
+            <div class="row placeholder">
+              <div class="col s12 m12">
+                
+              </div>
+            </div>
+      
+            <!-- Footer -->
+            <footer class="page-footer">
+              <div class="container">
+                <div class="row">
+                  <div class="col m6">
+                    <h5 class="white-text">Happning &#169 2018</h5>
+                    <div class="eventful-badge eventful-medium">
+                      <img src="http://api.eventful.com/images/powered/eventful_88x31.gif"
+                        alt="Local Events, Concerts, Tickets">
+                      <p><a href="http://eventful.com/">Events</a> by Eventful</p>
+      
+                      <img class="openWeatherIMG" src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/logo_OpenWeatherMap_orange.svg" alt="weather">
+                      <p><a href="http://openweathermap.org/">Weather</a> by OpenWeather</p>
+                    </div>
+                  </div>
+                  <div class="col offset-l2 ">
+                    <h5 class="white-text">Created By</h5>
+                    <ul>
+                      <li>
+                        <a class="grey-text text-lighten-3" href="https://github.com/ally0426" target="_blank">Youngmi Lee</a>
+                      </li>
+                      <li>
+                        <a class="grey-text text-lighten-3" href="https://github.com/guiguipp" target="_blank">Guillaume Paugam</a>
+                      </li>
+                      <li>
+                        <a class="grey-text text-lighten-3" href="https://github.com/dpedersen84" target="_blank">Dan Pedersen</a>
+                      </li>
+                      <li>
+                        <a class="grey-text text-lighten-3" href="https://github.com/skop22" target="_blank">Jordan Skophammer</a>
+                      </li>
+                      <li>
+                        <a class="grey-text text-lighten-3" href="https://github.com/kvarble" target="_blank">Kathy Varble</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+      
+        </div> <!-- End Container Div -->
+      
+            <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+            <script type="text/javascript" src="./assets/javascript/frontend.js"> </script>
+            <script type="text/javascript" src="./assets/javascript/events.js"></script>
+            <script type="text/javascript" src="./assets/javascript/weather.js"></script>
+      </body>
+      
+      </html>

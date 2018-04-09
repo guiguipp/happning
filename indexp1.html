@@ -48,18 +48,6 @@
         <h3>Let's Make Some Plans!</h3>
       </div>
     </div>
-    <div class="row placeholder">
-        <div class="col s12 m12">
-
-          <h5>
-            Hi! Welcome to Happning! We would like to help you make some plans. 
-            <br>
-            Just enter your city and the date below and Happning will return results from Eventful and OpenWeather for activities and weather. 
-          </h5>
-
-          
-        </div>
-      </div>
 
     <div class="card-action">
       <div class="row input-body">
@@ -79,89 +67,8 @@
         </form>
       </div>
     </div>
-
-    <!-- weather -->
-    <div class="row shazam">
-      <div class="col s12 m12">
-        <div class="panel-table panel-default panel-body blue-grey darken-1 weather-card">
-          <div class="panel-heading">
-            <h4 class="panel-title weather-title">Weather Forecast <img src="assets/images/clouds.png"></h4>
-          </div>
-          <table class="table table-striped responsive-table">
-            <thead class="error-message" id="weather-header">
-                <tr>
-                  <th class= "not-empty"> <!-- icon --> </th>
-                  <th>Date</th>
-                  <th>City</th>
-                  <th>Sky</th>
-                  <th>Temperature</th>
-                </tr>
-            </thead>
-            <tbody id="weather-table"> </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- events -->
-    <div class="row shazam">
-      <div class="col s12 m12">
-          <div class="panel-table panel-default panel-body blue-grey darken-1 weather-card">
-            <div class="panel-heading">
-              <h4 class="panel-title event-title">Events <img src="assets/images/clouds.png"></h4>
-            </div>
-            <table id="event-list" class="table table-striped responsive-table highlight">
-              <thead class="error-message">
-                <tr>
-                  <th></th>
-                  <th>Event Title</th>
-                  <th>Description</th>
-                  <th>Time</th>
-                </tr>
-              </thead>
-              <tbody id="events">
-              </tbody>
-            </table>
-        </div>
-      </div>
-    </div>
-  
-    <div class="row">
-      <!-- Modal Trigger -->
-      <div class="fixed-action-btn">
-        <a id="fav-icon" class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
-          <i class="material-icons">favorite_border</i>
-        </a>
-      <!-- Modal Structure -->
-      <div id="modal1" class="modal">
-        <div class="modal-content">
-          <h4>Favorite Events</h4>
-          <table>
-            <!-- <thead> -->
-            <!-- <tr> -->
-            <tbody id="favorite-list">
-            </tbody>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        </div>
-      </div>
-      <div class="row placeholder">
-        <div class="col s12 m12">  
-        </div>
-      </div>
-      <div class="row placeholder">
-        <div class="col s12 m12">      
-        </div>
-      </div>
-      <div class="row placeholder">
-        <div class="col s12 m12">      
-        </div>
-      </div>
-      <!-- Footer -->
-      <footer class="page-footer">
+<!-- Footer -->
+<footer class="page-footer">
         <div class="container">
           <div class="row">
             <div class="col m6">
@@ -203,8 +110,6 @@
   </div> <!-- End Container Div -->
 
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-      <script type="text/javascript" src="./assets/javascript/geolocation.js"></script>
       <script type="text/javascript" src="./assets/javascript/frontend.js"> </script>
       <script type="text/javascript" src="./assets/javascript/events.js"></script>
       <script type="text/javascript" src="./assets/javascript/weather.js"></script>
