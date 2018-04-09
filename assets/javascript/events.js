@@ -12,6 +12,8 @@ const dateFormat = "YYYYMMDD";
 // Functions triggered on event search
 $("#search").on("click", function (event) {
     event.preventDefault();
+    $(".shazam").show();
+    $(".placeholder").hide();
     
     if ($("#location").val().trim() !== "") {
         userCity = $("#location").val().trim();
