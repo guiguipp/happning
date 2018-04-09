@@ -19,6 +19,8 @@ $(document).ready(function() {
 
             $(this).attr("heart", "full")
 
+            $('#fav-icon').addClass("pulse")
+
             var row = $("<tr>");
             favIcon.clone().appendTo(row)
             favRow.clone().appendTo(row)
