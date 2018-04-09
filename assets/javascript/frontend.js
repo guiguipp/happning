@@ -41,4 +41,6 @@ $(document).ready(function() {
 });
 $(document).ajaxError(function(){
     M.toast({html: 'Sorry, we were unable to find information for this request. Please double check your search criteria and try again!'})
+
   });
+
