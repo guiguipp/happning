@@ -113,18 +113,19 @@ footer {
     clear: both;
     bottom: 0;
     width: 100%;
+    margin-bottom: -150px !important;
 }
 
 .current-weather {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 40px;
     padding-left: 15px;
+    display: flex;
 }
 
 .weather-title, .event-title {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 40px;
-    /* padding-left: 50px; */
     color: white;
 }
 
@@ -169,6 +170,8 @@ thead {
 .card {
     padding-top: 10px !important;
 }
-.cloud {
-    margin-left: 120px;
+
+.openWeatherIMG {
+    width: 200px;
 }
+

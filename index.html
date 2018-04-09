@@ -34,7 +34,7 @@
       <div class="col s4 m4">
         <div class="panel blue-grey darken-1 weather-card">
           <div class="panel-content white-text">
-            <span class="panel-title current-weather">Current Weather</span>
+            <span class="panel-title current-weather center-align">Current Weather</span>
             <br>
             <p class="center-align" id="location-weather"></p>
           </div>
@@ -44,28 +44,28 @@
 
     <!-- Form -->
     <div class="row main">
-      <div class="col s12">
-      <h3>Let's Make Some Plans!</h3>
+      <div class="col s12 m12">
+        <h3>Let's Make Some Plans!</h3>
       </div>
     </div>
 
     <div class="card-action">
-    <div class="row input-body">
-      <form class="col s12">
-        <div class="col s1"></div>
-        <div class="input-field col s4">
-
-          <input id="location" type="text" class="validate">
-          <label class="active" for="location">Where? (city)</label>
-        </div>
-        <div class="input-field col s4">
-            <input id="date" type="text" class="datepicker validate">
+      <div class="row input-body">
+        <form class="col s12 m12">
+          <div class="col s1"></div>
+          
+          <div class="input-field col s4">
+            <input id="location" type="text" class="validate" required>
+            <label class="active" for="location">Where? (city)</label>
+          </div>
+          <div class="input-field col s4">
+            <input id="date" type="text" class="datepicker validate" required>
             <label class="active"  for="date">When? (dd/mm/yyyy)</label>
-        </div>  
-        <div class="col s1"></div>
-          <button class="submit btn waves-effect waves-light" name="action" id="search">Find</button>
-      </form>
-    </div>
+          </div>  
+          <div class="col s1"></div>
+            <button class="submit btn waves-effect waves-light" name="action" id="search">Find</button>
+        </form>
+      </div>
     </div>
 
     <!-- weather -->
@@ -76,7 +76,7 @@
             <h4 class="panel-title weather-title">Weather Forecast<img src="assets/images/clouds.png"></h4>
           </div>
           <table class="table table-striped responsive-table">
-            <thead id="weather-header">
+            <thead class="error-message" id="weather-header">
                 <tr>
                   <th class= "not-empty"> <!-- icon --> </th>
                   <th>Date</th>
@@ -90,15 +90,16 @@
         </div>
       </div>
     </div>
+
     <!-- events -->
     <div class="row">
-      <div class="col m12">
+      <div class="col s12 m12">
           <div class="panel-table panel-default panel-body blue-grey darken-1 weather-card">
             <div class="panel-heading">
               <h4 class="panel-title event-title">Events<img src="assets/images/clouds.png"></h4>
             </div>
             <table id="event-list" class="table table-striped responsive-table highlight">
-              <thead>
+              <thead class="error-message">
                 <tr>
                   <th></th>
                   <th>Event Title</th>
@@ -113,34 +114,19 @@
       </div>
     </div>
   
-
     <div class="row">
       <!-- Modal Trigger -->
       <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
+        <a id="fav-icon" class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1">
           <i class="material-icons">favorite_border</i>
         </a>
-    
       <!-- Modal Structure -->
       <div id="modal1" class="modal">
         <div class="modal-content">
           <h4>Favorite Events</h4>
           <table>
-            <thead>
-              <tr>
-                  <!-- <th>Event Title</th>
-                  <th>Event Description</th>
-                  <th>Date/Place</th> -->
-                  <!-- <th>Date</th>
-                  <th>Time</th> -->
-
-            <!-- <thead>
-              <tr>           
-                  <th>Event Title</th>
-                  <th>Event Description</th>
-                  <th>Date/Time</th>
-              </tr>
-            </thead> -->
+            <!-- <thead> -->
+            <!-- <tr> -->
             <tbody id="favorite-list">
             </tbody>
           </table>
@@ -161,6 +147,9 @@
                 <img src="http://api.eventful.com/images/powered/eventful_88x31.gif"
                   alt="Local Events, Concerts, Tickets">
                 <p><a href="http://eventful.com/">Events</a> by Eventful</p>
+
+                <img class="openWeatherIMG" src="https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/logo_OpenWeatherMap_orange.svg" alt="weather">
+                <p><a href="http://openweathermap.org/">Weather</a> by OpenWeather</p>
               </div>
             </div>
             <div class="col offset-l2 ">
@@ -191,8 +180,8 @@
   </div> <!-- End Container Div -->
 
       <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-      <script type="text/javascript" src="./assets/javascript/events.js"></script>
       <script type="text/javascript" src="./assets/javascript/frontend.js"> </script>
+      <script type="text/javascript" src="./assets/javascript/events.js"></script>
       <script type="text/javascript" src="./assets/javascript/weather.js"></script>
 </body>
 

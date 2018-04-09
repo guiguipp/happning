@@ -1,5 +1,17 @@
-$(document).ready(function() {
+var userCity;
+function getUserCity(){
+$.ajax({
+    url: "https://geoip-db.com/json",
+    method: "GET"
+    })
+    .then(function (response) {
+        var responseJSON = JSON.parse(response)
+        userCity = responseJSON.city;
+        return userCity;
+    });
+}
 
+$(document).ready(function() {
 	console.log("ready")
 
     //event handler on heart icon when events are generated
@@ -18,6 +30,8 @@ $(document).ready(function() {
             console.log(favRow)
 
             $(this).attr("heart", "full")
+
+            $('#fav-icon').addClass("pulse")
 
             var row = $("<tr>");
             favIcon.clone().appendTo(row)

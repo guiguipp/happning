@@ -1,10 +1,10 @@
-// global variables
+// global variables 
 const eventsArray = [];
 const favIcon = "favorite";
 const unFavIcon = "favorite_border";
 
-let timeStamp = Math.floor(Date.now() / 1000)
-console.log("timeStamp: " , timeStamp)
+getUserCity()
+console.log("userCity after function: " + userCity);
 
 // This is the time format the event API is requesting  
 const dateFormat = "YYYYMMDD"; 
@@ -12,14 +12,18 @@ const dateFormat = "YYYYMMDD";
 // Functions triggered on event search
 $("#search").on("click", function (event) {
     event.preventDefault();
-
-    var userCity = $("#location").val().trim();
-    console.log("userCity:", userCity);
-
-    var today = moment();
-    var dateEntered = moment($("#date").val().trim());
     
-    var reformattedToday = moment(today).format(dateFormat);
+    if ($("#location").val().trim() !== "") {
+        userCity = $("#location").val().trim();
+    }
+    var dateEntered;
+    var today = moment();
+    
+    if ($("#date").val() !== "") {
+        dateEntered = moment($("#date").val().trim());
+    }
+    else dateEntered = moment(today).format(dateFormat);
+    
     var reformattedDateEntered = moment(dateEntered).format(dateFormat);
     
     // add 00 because that's how the API wants us to structure the date in our query
@@ -31,7 +35,6 @@ var eventsURL = "http://api.eventful.com/json/events/search?...&date=" + fromDat
  userCity + "&app_key=" + eventAPIKey;
 
 // output format to JSON see: http://api.eventful.com/docs/formats 
-
 $.ajax({
     url: eventsURL,
     method: "GET"
@@ -90,7 +93,7 @@ $.ajax({
                         eDate = "All day"; 
                     } 
                 else {
-                    eDate = "Time not specified :( "; 
+                    eDate = "Time not specified \n:( "; 
                     }; 
                 
                 // Creating the row with the attributes of the object + the HTML tags
@@ -100,10 +103,13 @@ $.ajax({
 
             $("#events").append(eRow);
         }
-    });   
+    })
 });
 $(document).on("click", ".material-icons", function (){
     getId = ($(this).attr("heart"))
     console.log(getId);
 });
+$(document).ajaxError(function(){
+    M.toast({html: 'Sorry, we were unable to find information for this request. Please double check your search criteria and try again!'})
+  });
 
