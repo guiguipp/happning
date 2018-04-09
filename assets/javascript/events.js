@@ -12,6 +12,8 @@ const dateFormat = "YYYYMMDD";
 // Functions triggered on event search
 $("#search").on("click", function (event) {
     event.preventDefault();
+    $(".shazam").show();
+    $(".placeholder").hide();
     
     if ($("#location").val().trim() !== "") {
         userCity = $("#location").val().trim();
@@ -112,4 +114,3 @@ $(document).on("click", ".material-icons", function (){
 $(document).ajaxError(function(){
     M.toast({html: 'Sorry, we were unable to find information for this request. Please double check your search criteria and try again!'})
   });
-

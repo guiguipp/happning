@@ -57,7 +57,7 @@ currentWeather();
     //Forecast
     $("#search").on("click", function () {
         event.preventDefault();
-        
+
         //If City Input (if not, stays defined by geolocation API)       
         if ($("#location").val().trim() !== "") {
             userCity = $("#location").val().trim();

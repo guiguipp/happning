@@ -1,3 +1,5 @@
+$(".shazam").hide();
+
 var userCity;
 function getUserCity(){
 $.ajax({
@@ -12,7 +14,7 @@ $.ajax({
 }
 
 $(document).ready(function() {
-	console.log("ready")
+    console.log("ready")
 
     //event handler on heart icon when events are generated
     $(document).on("click", "#favorite-event", function() {
