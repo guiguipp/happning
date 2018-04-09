@@ -1,10 +1,9 @@
 // global variables 
 const eventsArray = [];
-const favIcon = "favorite";
-const unFavIcon = "favorite_border";
+const favorIcon = "favorite";
+const unfavorIcon = "favorite_border";
 
 getUserCity()
-console.log("userCity after function: " + userCity);
 
 // This is the time format the event API is requesting  
 const dateFormat = "YYYYMMDD"; 
@@ -42,7 +41,7 @@ $.ajax({
     method: "GET"
     }).then(function (response) {
         var responseJSON = JSON.parse(response)
-        console.log("eventsURL: ", eventsURL);
+        // console.log("eventsURL: ", eventsURL);
 
         const { event } = responseJSON.events;
 
@@ -52,10 +51,10 @@ $.ajax({
             var description = e.description ? e.description : "No Description yet. Come check later! \n";
 
             // This is an object constructor to create each event retrieved from the API as an object
-            function EventDisplayed(id, icon, favIcon, heartStatus, title, description, location, start, end, duration) {
+            function EventDisplayed(id, icon, favorIcon, heartStatus, title, description, location, start, end, duration) {
                 this.id = id;
                 this.icon = icon;
-                this.favIcon = favIcon;
+                this.favorIcon = favorIcon;
                 this.heartStatus = heartStatus;
                 this.title = title;
                 this.description = description;
@@ -69,7 +68,7 @@ $.ajax({
             // and this is how objects can be dynamically created with properties of the constructor and elements of the API + the "for loop"
             var newEvent = new EventDisplayed(
                 "id='" + e.id + "'>",
-                "<td class='icon'> <i heart='empty' class='material-icons' id='favorite-event' value='save'>" + unFavIcon + "</i>",
+                "<td class='icon'> <i heart='empty' class='material-icons' id='favorite-event' value='save'>" + unfavorIcon + "</i>",
                 "favorite",
                 "empty",
                 e.title,
@@ -101,7 +100,7 @@ $.ajax({
                 // Creating the row with the attributes of the object + the HTML tags
                 // add ${newEvent.location} for location
                 var eRow = `${eInfo} ${newEvent.id} ${newEvent.icon} ${eTitle} ${newEvent.title} ${eDescription} ${newEvent.description} ${tdDate} ${eDate}`;
-                console.log(eRow);
+                // console.log(eRow);
 
             $("#events").append(eRow);
         }
@@ -109,8 +108,5 @@ $.ajax({
 });
 $(document).on("click", ".material-icons", function (){
     getId = ($(this).attr("heart"))
-    console.log(getId);
+    // console.log(getId);
 });
-$(document).ajaxError(function(){
-    M.toast({html: 'Sorry, we were unable to find information for this request. Please double check your search criteria and try again!'})
-  });
