@@ -171,3 +171,6 @@ thead {
     padding-top: 10px !important;
 }
 
+.openWeatherIMG {
+    width: 200px;
+}
