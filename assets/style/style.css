@@ -12,20 +12,24 @@
     padding: 10px;
     margin-left: 40px !important;
 }
+
 .card-action {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 20px !important;
     color: midnightblue !important;
     margin: 60px;
 }
+
 label {
     color: black !important;
     font-size: 40px !important;
 }
+
 .input-field {
     color: black;
     margin-left: 45px !important;
 }
+
 .validate {
     margin-top: 45px !important;
     color: black;
@@ -37,6 +41,7 @@ h3 {
     font-family: 'Barlow Semi Condensed', sans-serif;
     border-bottom: 1px solid black;
 }
+
 h4 {
     margin-left: 100px;
     margin-right: 105px !important;
