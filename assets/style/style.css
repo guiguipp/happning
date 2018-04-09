@@ -175,6 +175,9 @@ thead {
     width: 200px;
 }
 
+.placeholder:first-child {
+    height: 50px;
+}
 .placeholder {
-    height: 400px;
+    height: 150px;
 }
