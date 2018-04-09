@@ -95,8 +95,8 @@ $(document).ready(function () {
 
             if (days >= 16) {
                 wHead = "No weather data available for the date selected at the moment. Please check again later!";
-                wRow = "";
-                weatherCont();
+                $("#weather-header").empty("").append(wHead);
+                $("#weather-table").empty("")
             } 
             else {                        
 
@@ -142,23 +142,14 @@ $(document).ready(function () {
                         const tTemp = "°F";
                         const tHighTemp = "<td>High: ";
                         const tLowTemp = " / Low: ";
-                    
-                        // appended row
-                        // if (days >= 16) {
-                        //     wRow = "No weather data available yet for the date selected. Please check later!"
-                        // } 
-                        // else {                            
+                                           
                         wHead = "";
                         wRow = `${tRow}${tTag}${tImg}${day.image}${tTag}${day.dateNew}${tTag}${day.city}${tTag}${day.sky}${tHighTemp}${day.tempHigh}${tTemp}${tLowTemp}${day.tempLow}${tTemp}`;
                         // }
-                        weatherCont()
-                        // console.log(wRow);
-                        // $("#weather-table").empty("").append(wRow);
+                        $("#weather-header").html("<tr> <th class= 'not-empty'>  </th> <th>Date</th> <th>City</th> <th>Sky</th> <th>Temperature</th>");
+                        $("#weather-table").empty("").append(wRow);
+                        console.log(wRow);
                 });
             }
         });
     })
-    function weatherCont(){
-        $("#weather-header").empty("").append(wHead);
-        $("#weather-table").empty("").append(wRow);
-    }

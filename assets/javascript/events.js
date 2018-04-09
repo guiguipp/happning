@@ -90,7 +90,7 @@ $.ajax({
                         eDate = "All day"; 
                     } 
                 else {
-                    eDate = "Time not specified :( "; 
+                    eDate = "Time not specified \n:( "; 
                     }; 
                 
                 // Creating the row with the attributes of the object + the HTML tags
@@ -100,10 +100,13 @@ $.ajax({
 
             $("#events").append(eRow);
         }
-    });   
+    })
 });
 $(document).on("click", ".material-icons", function (){
     getId = ($(this).attr("heart"))
     console.log(getId);
 });
+$(document).ajaxError(function(){
+    M.toast({html: 'Sorry, we were unable to find information for this request. Please double check your search criteria and try again!'})
+  });
 
