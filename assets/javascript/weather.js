@@ -6,6 +6,8 @@ let wHead;
 
 $(".modal").modal();
 
+// getUserCity();
+
 $(document).ready(function () {
     console.log("Hello")
     //Datepicker
@@ -22,17 +24,15 @@ $(document).ready(function () {
     function currentWeather() {
         // Here we run our AJAX for Geo Location
         $.ajax({
-            url: "https://geoip-db.com/jsonp",
-            jsonpCallback: "callback",
-            dataType: "jsonp",
-            success: function (location) {
-                console.log("Current Location: " + location.city);
-                
-                //City Input
-                var userCity = location.city;
-                // Here we are building the URL we need to query the database
-                var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" +
-                    userCity + "&units=imperial&appid=" + weatherAPIKey;
+            url: "https://geoip-db.com/json",
+            method: "GET"
+            })
+            .then(function (response) {
+                var responseJSON = JSON.parse(response)
+                userCity = responseJSON.city;
+        
+             // Here we are building the URL we need to query the database
+                var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + userCity + "&units=imperial&appid=" + weatherAPIKey;
                 // Here we run our AJAX call to the OpenWeatherMap API 
                 $.ajax({
                     url: weatherURL,
@@ -47,20 +47,21 @@ $(document).ready(function () {
                         $("#location-weather").append(userWeatherDiv);
                         userWeatherDiv.append("<div>" + userWeatherCity + "</div>");
                         userWeatherDiv.append("<div>" + userWeatherTemp + "</div>");
-                        userWeatherDiv.append("<div>" + userWeatherDescription + "</div>");
+                        userWeatherDiv.append("<div>" + userWeatherDescription + "</div>");    
                     });
-            }
-        });
-    };
-    currentWeather();
-
+                });    
+            };
+currentWeather();
     
+
     //Forecast
     $("#search").on("click", function () {
         event.preventDefault();
-        //City Input
-        var userCity = $("#location").val().trim(); //Will Be Used In Final Version
-        console.log("userCity: ", userCity);
+        
+        //If City Input (if not, stays defined by geolocation API)       
+        if ($("#location").val().trim() !== "") {
+            userCity = $("#location").val().trim();
+        }
        
         //Days of Weather Needed
         $("#date").datepicker();
@@ -86,8 +87,20 @@ $(document).ready(function () {
                 return date;
             }
             
-            var today = moment().format(dateFormat);
-            var dateEntered = moment($("#date").val()).format(dateFormat);
+            today = moment().format(dateFormat);
+            console.log(today);
+            
+            
+            console.log($("#date").val())
+            if ($("#date").val() === "") {
+                dateEntered = moment(today).format(dateFormat);
+                console.log("Because nothing: " + dateEntered)
+            }
+            else {
+                dateEntered = moment($("#date").val()).format(dateFormat);
+                console.log("Because something: " + dateEntered)
+            }
+            // var to get number of days from now to end of period queried
             var days = moment(dateEntered).diff(moment(today), 'days');
             
             var weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" +
