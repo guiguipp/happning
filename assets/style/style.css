@@ -113,7 +113,6 @@ footer {
     opacity: 0.4;
     margin-top: -50px;
     clear: both;
-    /*position: fixed;*/
     bottom: 0;
     width: 100%;
 }
@@ -159,9 +158,4 @@ thead {
 .card {
     padding-top: 10px !important;
 }
-/* #location {
-    margin-left: 10px;
-}
-#date {
-    margin-left: 10px;
-} */
+
