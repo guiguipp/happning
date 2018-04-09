@@ -77,7 +77,7 @@ $.ajax({
             // those are variable to add html tags dynamically
                 var eInfo = "<tr class='event'"; 
                 var idTag = "<td id='obj-"; 
-                var eTitle = "<td class='event-title'>"
+                var eTitle = "<td class='event-name'>"
                 var eDescription = "<td class ='event-description'>"
                 var tdDate = "<td class='date'>"
                 var eDate
