@@ -9,7 +9,7 @@ $(".modal").modal();
 // getUserCity();
 
 $(document).ready(function () {
-    console.log("Hello")
+    console.log(`If you are seeing this message: "No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access." your access to the APIs we are using is probably blocked by Chrome. To circumvent this, you can download this extension: https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc/related?hl=en to browse the site locally`)
     //Datepicker
     $('.datepicker').datepicker({
         format: "mm/dd/yyyy",
@@ -18,7 +18,7 @@ $(document).ready(function () {
 
     //Current Date with Moment.js
     var currentDate = moment();
-    console.log("Current Date: ", currentDate.format("L"));
+    // console.log("Current Date: ", currentDate.format("L"));
 
     //Current Location Weather Function
     function currentWeather() {
@@ -88,17 +88,15 @@ currentWeather();
             }
             
             today = moment().format(dateFormat);
-            console.log(today);
+            // console.log(today);
             
-            
-            console.log($("#date").val())
             if ($("#date").val() === "") {
                 dateEntered = moment(today).format(dateFormat);
-                console.log("Because nothing: " + dateEntered)
+                // console.log("Because nothing entered: " + dateEntered)
             }
             else {
                 dateEntered = moment($("#date").val()).format(dateFormat);
-                console.log("Because something: " + dateEntered)
+                // console.log("Because something entered: " + dateEntered)
             }
             // var to get number of days from now to end of period queried
             var days = moment(dateEntered).diff(moment(today), 'days');
@@ -118,8 +116,8 @@ currentWeather();
                 method: "GET"
             }).then(function (response) {
                     // Log the queryURL
-                    console.log("Forecast weatherURL: " + weatherURL);
-                    console.log("================================");
+                    // console.log("Forecast weatherURL: " + weatherURL);
+                    // console.log("================================");
                     let results = response.list;
                     for (let i = 0; i < results.length; i++) {
                         var unixDate = results[i].dt;
@@ -161,7 +159,7 @@ currentWeather();
                         // }
                         $("#weather-header").html("<tr> <th class= 'not-empty'>  </th> <th>Date</th> <th>City</th> <th>Sky</th> <th>Temperature</th>");
                         $("#weather-table").empty("").append(wRow);
-                        console.log(wRow);
+                        // console.log(wRow);
                 });
             }
         });
